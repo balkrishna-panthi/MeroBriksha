@@ -5,6 +5,10 @@ VisualStudioVersion = 17.14.37216.2 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeroBriksha", "MeroBriksha\MeroBriksha.csproj", "{8CC9DBA1-8E62-46F7-AFB3-C2085A1F81CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeroBriksha.Core", "MeroBriksha.Core\MeroBriksha.Core.csproj", "{9524F1E8-54FE-4B06-AA4C-45DC2189CDD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeroBriksha.Services", "MeroBriksha.Services\MeroBriksha.Services.csproj", "{7DB142C7-6321-4AA2-9C40-03127C478B59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8CC9DBA1-8E62-46F7-AFB3-C2085A1F81CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CC9DBA1-8E62-46F7-AFB3-C2085A1F81CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CC9DBA1-8E62-46F7-AFB3-C2085A1F81CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9524F1E8-54FE-4B06-AA4C-45DC2189CDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9524F1E8-54FE-4B06-AA4C-45DC2189CDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9524F1E8-54FE-4B06-AA4C-45DC2189CDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9524F1E8-54FE-4B06-AA4C-45DC2189CDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB142C7-6321-4AA2-9C40-03127C478B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB142C7-6321-4AA2-9C40-03127C478B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB142C7-6321-4AA2-9C40-03127C478B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB142C7-6321-4AA2-9C40-03127C478B59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

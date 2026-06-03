@@ -1,3 +1,5 @@
+using MeroBriksha.Services.Classes;
+using MeroBriksha.Services.Interfaces;
 using Microsoft.OpenApi;
 using System.Reflection;
 
@@ -20,6 +22,10 @@ namespace MeroBriksha
                     Description = "API for MeroBriksha"
                 });
             });
+
+            #region DI
+            builder.Services.AddTransient<IPlant, Plant>();
+            #endregion
 
             var app = builder.Build();
             try
