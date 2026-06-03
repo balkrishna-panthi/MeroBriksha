@@ -1,0 +1,6 @@
+@MeroBriksha_HostAddress = http://localhost:5185
+
+GET {{MeroBriksha_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
