@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/MeroBrikshaBackend/MeroBriksha/.vs/MeroBriksha
+/MeroBrikshaBackend/MeroBriksha/MeroBriksha/bin/Debug/net9.0
+/MeroBrikshaBackend/MeroBriksha/MeroBriksha/obj
