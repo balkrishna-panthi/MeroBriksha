@@ -11,7 +11,7 @@ namespace MeroBriksha.Controllers
     public class MeroBrikshaTestController : ControllerBase
     {
         private readonly IPlantService _plantService;
-        
+
         public MeroBrikshaTestController(IPlantService plantService)
         {
             _plantService = plantService;
@@ -19,20 +19,12 @@ namespace MeroBriksha.Controllers
         [HttpGet("ProjectName")]
         public string GetProjectName()
         {
-                       return "Mero Briksha";
+            return "Mero Briksha";
         }
         [HttpGet("ProjectDescription")]
         public string GetProjectDescription()
         {
             return "Mero Briksha is a project focused on tree planting and environmental conservation.";
-        }
-
-
-        [HttpGet]
-        public async Task<IActionResult> GetPlants()
-        {
-            var plants = await _plantService.GetAllPlantsAsync();
-            return Ok(plants);
         }
 
     }

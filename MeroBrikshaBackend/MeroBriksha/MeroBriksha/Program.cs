@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using MeroBriksha.Data.DBContext;
 using MeroBriksha.Data.Interfaces;
 using MeroBriksha.Data.Repositories;
-using MeroBriksha.Services.Services;
 
 namespace MeroBriksha
 {
