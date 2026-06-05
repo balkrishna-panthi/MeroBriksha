@@ -1,6 +1,8 @@
-﻿using MeroBriksha.Services.Interfaces;
+﻿using MeroBriksha.Data.DBContext;
+using MeroBriksha.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MeroBriksha.Controllers
 {
@@ -8,10 +10,11 @@ namespace MeroBriksha.Controllers
     [ApiController]
     public class MeroBrikshaTestController : ControllerBase
     {
-        IPlant plant;
-        public MeroBrikshaTestController(IPlant plantService)
+        private readonly IPlantService _plantService;
+        
+        public MeroBrikshaTestController(IPlantService plantService)
         {
-            plant = plantService;
+            _plantService = plantService;
         }
         [HttpGet("ProjectName")]
         public string GetProjectName()
@@ -24,16 +27,12 @@ namespace MeroBriksha.Controllers
             return "Mero Briksha is a project focused on tree planting and environmental conservation.";
         }
 
-        [HttpGet("PlantNames")]
-        public List<string> GetAllPlantNames()
-        {
-            return plant.GetALlPlantNames();   
-        }
 
-        [HttpGet("PlantNameById")]
-        public string GetPlantNameById(string plantId)
+        [HttpGet]
+        public async Task<IActionResult> GetPlants()
         {
-            return plant.GetPlantNameById(plantId);
+            var plants = await _plantService.GetAllPlantsAsync();
+            return Ok(plants);
         }
 
     }

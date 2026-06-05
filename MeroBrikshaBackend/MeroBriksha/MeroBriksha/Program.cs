@@ -1,9 +1,12 @@
-using MeroBriksha.Services.Classes;
+using MeroBriksha.Services.Services;
 using MeroBriksha.Services.Interfaces;
 using Microsoft.OpenApi;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using MeroBriksha.Data.DBContext;
+using MeroBriksha.Data.Interfaces;
+using MeroBriksha.Data.Repositories;
+using MeroBriksha.Services.Services;
 
 namespace MeroBriksha
 {
@@ -27,7 +30,9 @@ namespace MeroBriksha
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             #region DI
-            builder.Services.AddTransient<IPlant, Plant>();
+            builder.Services.AddTransient<IPlantService, PlantService>();
+
+            builder.Services.AddScoped<IPlantRepository, PlantRepository>();
             #endregion
 
             var app = builder.Build();

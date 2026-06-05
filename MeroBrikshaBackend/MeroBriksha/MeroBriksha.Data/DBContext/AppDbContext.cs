@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace MeroBriksha.Data.DBContext
@@ -13,6 +14,13 @@ namespace MeroBriksha.Data.DBContext
         {
         }
 
-        public DbSet<Plant> Plants { get; set; }
+        public DbSet<Core.Entities.Plant> Plants { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
     }
 }

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MeroBriksha.Core\MeroBriksha.Core.csproj" />
+    <ProjectReference Include="..\MeroBriksha.Data\MeroBriksha.Data.csproj" />
   </ItemGroup>
 
 </Project>
