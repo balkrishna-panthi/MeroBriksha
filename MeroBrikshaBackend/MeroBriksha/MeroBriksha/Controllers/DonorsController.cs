@@ -16,14 +16,14 @@ namespace MeroBriksha.Controllers
             _donorService = donorService;
         }
 
-        [HttpGet]
+        [HttpGet("GetDonors")]
         public async Task<IActionResult> GetDonors()
         {
             var donors = await _donorService.GetAllDonorsAsync();
             return Ok(donors);
         }
 
-        [HttpPost]
+        [HttpPost("RegisterDonor")]
         public async Task<IActionResult> CreateDonor(CreateDonorRequest request)
         {
             var donor = await _donorService.CreateDonorAsync(request);
