@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeroBriksha.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260605142002_ConfigurePlantEntity")]
-    partial class ConfigurePlantEntity
+    [Migration("20260605215854_InsertInitialPlants")]
+    partial class InsertInitialPlants
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

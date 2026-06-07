@@ -1,4 +1,4 @@
-﻿namespace MeroBriksha.Services.DTOs
+﻿namespace MeroBriksha.Services.DTOs.PlantDtos
 {
     public class PlantResponse
     {

@@ -1,5 +1,5 @@
 ﻿using MeroBriksha.Data.Interfaces;
-using MeroBriksha.Services.DTOs;
+using MeroBriksha.Services.DTOs.PlantDtos;
 using MeroBriksha.Services.Interfaces;
 
 namespace MeroBriksha.Services.Services

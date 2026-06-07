@@ -14,8 +14,10 @@ namespace MeroBriksha.Data.Migrations
                 name: "Plants",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    NAME = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ID = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    SCIENTIFICNAME = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    DESCRIPTION = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {

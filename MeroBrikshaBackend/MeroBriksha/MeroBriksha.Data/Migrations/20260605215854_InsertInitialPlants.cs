@@ -5,14 +5,13 @@
 namespace MeroBriksha.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InsertPlantsData : Migration
+    public partial class InsertInitialPlants : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
                 table: "Plants",
-                columns: new[] { "ID", "NAME", "ScientificName", "Description" },
+                columns: new[] { "ID", "NAME", "SCIENTIFICNAME", "DESCRIPTION" },
                 values: new object[,]
                 {
             {
@@ -48,8 +47,6 @@ namespace MeroBriksha.Data.Migrations
                 });
         }
 
-
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
@@ -60,6 +57,5 @@ namespace MeroBriksha.Data.Migrations
             "1", "2", "3", "4", "5"
                 });
         }
-
     }
 }

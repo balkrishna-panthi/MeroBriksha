@@ -1,4 +1,4 @@
-﻿using MeroBriksha.Services.DTOs;
+﻿using MeroBriksha.Services.DTOs.PlantDtos;
 
 namespace MeroBriksha.Services.Interfaces
 {

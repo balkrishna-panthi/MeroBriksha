@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeroBriksha.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260605130935_InsertPlantsData")]
-    partial class InsertPlantsData
+    [Migration("20260605215345_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,24 +24,28 @@ namespace MeroBriksha.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MeroBriksha.Core.Plant", b =>
+            modelBuilder.Entity("MeroBriksha.Core.Entities.Plant", b =>
                 {
                     b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("DESCRIPTION")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("NAME")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("ScientificName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("SCIENTIFICNAME")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Plants");
+                    b.ToTable("Plants", (string)null);
                 });
 #pragma warning restore 612, 618
         }

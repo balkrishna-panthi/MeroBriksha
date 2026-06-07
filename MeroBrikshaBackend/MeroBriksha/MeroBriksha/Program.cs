@@ -30,8 +30,10 @@ namespace MeroBriksha
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             #region DI
             builder.Services.AddTransient<IPlantService, PlantService>();
-
             builder.Services.AddScoped<IPlantRepository, PlantRepository>();
+
+            builder.Services.AddScoped<IDonorRepository, DonorRepository>();
+            builder.Services.AddScoped<IDonorService, DonorService>();
             #endregion
 
             var app = builder.Build();
