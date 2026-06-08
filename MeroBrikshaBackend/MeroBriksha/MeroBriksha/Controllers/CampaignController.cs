@@ -23,7 +23,7 @@ namespace MeroBriksha.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> CreateCampaign(CreateCampaignRequest campaignRequest)
         {
-            var campaign = await  _campaignServices.CreateCampaignAsync(campaignRequest);
+            var campaign = await _campaignServices.CreateCampaignAsync(campaignRequest);
             return Ok(campaign);
         }
     }
