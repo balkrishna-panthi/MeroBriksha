@@ -29,6 +29,9 @@ namespace MeroBriksha
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             #region DI
+            builder.Services.AddTransient<ICampaignServices, CampaignService>();
+            builder.Services.AddTransient<ICampaignRepository, CampaignRepository>();
+
             builder.Services.AddTransient<IPlantService, PlantService>();
             builder.Services.AddScoped<IPlantRepository, PlantRepository>();
 

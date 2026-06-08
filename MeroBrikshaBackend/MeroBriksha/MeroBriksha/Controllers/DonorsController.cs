@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MeroBriksha.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/public/[controller]")]
     [ApiController]
     public class DonorsController : ControllerBase
     {
