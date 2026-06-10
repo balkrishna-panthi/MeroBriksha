@@ -11,9 +11,9 @@ namespace MeroBriksha.Services.Services
 {
     public class CampaignService : ICampaignServices
     {
-        ICampaignRepository _campaignRepository;    
-        public CampaignService(ICampaignRepository campaignRepository) 
-        { 
+        ICampaignRepository _campaignRepository;
+        public CampaignService(ICampaignRepository campaignRepository)
+        {
             _campaignRepository = campaignRepository;
         }
         public async Task<List<CampaignResponse>> GetAllCampaignsAsync()
@@ -27,6 +27,23 @@ namespace MeroBriksha.Services.Services
                 OrganizerName = x.ORGANIZERNAME,
                 StartDateUtc = x.STARTDATEUTC
             }).ToList();
+        }
+        public async Task<CampaignResponse> GetCampaignByIdAsync(string id)
+        {
+            var campaign = await _campaignRepository.GetCampaignByIdAsync(id);
+            if (campaign == null)
+            {
+                throw new ValidationException($"Campaign with ID {id} not found.");
+            }
+            return new CampaignResponse
+            {
+                Id = campaign.ID,
+                Name = campaign.NAME,
+                Description = campaign.DESCRIPTION,
+                OrganizerName = campaign.ORGANIZERNAME,
+                StartDateUtc = campaign.STARTDATEUTC,
+                EndDateUtc = campaign.ENDDATEUTC
+            };
         }
         public async Task<CampaignResponse> CreateCampaignAsync(CreateCampaignRequest request)
         {
@@ -52,5 +69,7 @@ namespace MeroBriksha.Services.Services
             };
             throw new NotImplementedException();
         }
+
+
     }
 }

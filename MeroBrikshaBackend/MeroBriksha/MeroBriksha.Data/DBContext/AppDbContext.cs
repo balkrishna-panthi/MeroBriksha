@@ -1,4 +1,5 @@
 ﻿using MeroBriksha.Core;
+using MeroBriksha.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace MeroBriksha.Data.DBContext
         public DbSet<Core.Entities.Plant> Plants { get; set; }
         public DbSet<Core.Entities.Donor> Donors { get; set; }
         public DbSet<Core.Entities.Campaign> Campaigns { get; set; }
+        public DbSet<Donation> Donations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

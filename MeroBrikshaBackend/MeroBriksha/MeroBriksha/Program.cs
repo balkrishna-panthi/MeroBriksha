@@ -37,6 +37,9 @@ namespace MeroBriksha
 
             builder.Services.AddScoped<IDonorRepository, DonorRepository>();
             builder.Services.AddScoped<IDonorService, DonorService>();
+
+            builder.Services.AddScoped<IDonationRepository, DonationRepository>();
+            builder.Services.AddScoped<IDonationService, DonationService>();
             #endregion
 
             var app = builder.Build();

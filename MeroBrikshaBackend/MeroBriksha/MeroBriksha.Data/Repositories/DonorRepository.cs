@@ -19,6 +19,13 @@ namespace MeroBriksha.Data.Repositories
             return await _context.Donors.ToListAsync();
         }
 
+        public async Task<Donor> GetDonorByIdAsync(string id)
+        {
+            var donor = await _context.Donors.FirstOrDefaultAsync(d => d.ID == id);
+
+            return donor;
+        }
+
         public async Task<Donor> CreateDonorAsync(Donor donor)
         {
             _context.Donors.Add(donor);
@@ -26,5 +33,7 @@ namespace MeroBriksha.Data.Repositories
 
             return donor;
         }
+
+       
     }
 }

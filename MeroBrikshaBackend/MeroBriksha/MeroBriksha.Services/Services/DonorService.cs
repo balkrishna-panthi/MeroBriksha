@@ -29,6 +29,23 @@ namespace MeroBriksha.Services.Services
                 CreatedDate = x.CREATEDDATE
             }).ToList();
         }
+        public async Task<DonorResponse> GetDonorByIdAsync(string id)
+        {
+           var donor = await _donorRepository.GetDonorByIdAsync(id);
+            if (donor == null)
+            {
+                return null;
+            }
+            return new DonorResponse
+            {
+                Id = donor.ID,
+                Fullname = donor.FULLNAME,
+                Email = donor.EMAIL,
+                PhoneNumber = donor.PHONENUMBER,
+                Address = donor.ADDRESS,
+                CreatedDate = donor.CREATEDDATE
+            };
+        }
 
         public async Task<DonorResponse> CreateDonorAsync(CreateDonorRequest request)
         {
@@ -53,5 +70,7 @@ namespace MeroBriksha.Services.Services
                 CreatedDate = createdDonor.CREATEDDATE
             };
         }
+
+        
     }
 }

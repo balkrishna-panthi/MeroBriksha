@@ -8,6 +8,7 @@ namespace MeroBriksha.Data.Interfaces
     public interface ICampaignRepository
     {
         Task<List<Campaign>> GetAllCampaignsAsync();
+        Task<Campaign> GetCampaignByIdAsync(string id);
         Task<Campaign> CreateCampaignAsync(Campaign campaign);
     }
 }

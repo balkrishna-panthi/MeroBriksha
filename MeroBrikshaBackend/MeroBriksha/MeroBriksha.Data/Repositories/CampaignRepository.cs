@@ -20,6 +20,11 @@ namespace MeroBriksha.Data.Repositories
         {
             return await _context.Campaigns.ToListAsync();
         }
+        public async Task<Campaign> GetCampaignByIdAsync(string id)
+        {
+            var campaign = await _context.Campaigns.FirstOrDefaultAsync(x => x.ID == id);
+            return campaign;
+        }
         public async Task<Campaign> CreateCampaignAsync(Campaign campaign)
         {
             _context.Add(campaign);
@@ -27,6 +32,6 @@ namespace MeroBriksha.Data.Repositories
             return campaign;
         }
 
-        
+
     }
 }
