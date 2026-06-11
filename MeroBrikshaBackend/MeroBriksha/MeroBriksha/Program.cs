@@ -1,11 +1,12 @@
-using MeroBriksha.Services.Services;
-using MeroBriksha.Services.Interfaces;
-using Microsoft.OpenApi;
-using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 using MeroBriksha.Data.DBContext;
 using MeroBriksha.Data.Interfaces;
 using MeroBriksha.Data.Repositories;
+using MeroBriksha.Middleware;
+using MeroBriksha.Services.Interfaces;
+using MeroBriksha.Services.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
+using System.Reflection;
 
 namespace MeroBriksha
 {
@@ -15,7 +16,7 @@ namespace MeroBriksha
         {
             var builder = WebApplication.CreateBuilder(args);
 
-                builder.Services.AddControllers();
+            builder.Services.AddControllers();
 
             builder.Services.AddSwaggerGen(options =>
             {
@@ -48,20 +49,19 @@ namespace MeroBriksha
             var app = builder.Build();
             try
             {
+                app.UseMiddleware<GlobalExceptionMiddleware>();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                if (app.Environment.IsDevelopment())
+                {
+                    app.UseSwagger();
+                    app.UseSwaggerUI();
+                }
 
-            app.UseHttpsRedirection();
+                app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+                app.UseAuthorization();               
 
-           
-
-            app.MapControllers();
+                app.MapControllers();
             }
             catch (ReflectionTypeLoadException ex)
             {
