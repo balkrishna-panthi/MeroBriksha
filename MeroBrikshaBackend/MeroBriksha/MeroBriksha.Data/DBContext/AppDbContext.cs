@@ -15,6 +15,7 @@ namespace MeroBriksha.Data.DBContext
         {
         }
 
+        //DbSet refers to a table in the Database
         public DbSet<Core.Entities.Plant> Plants { get; set; }
         public DbSet<Core.Entities.Donor> Donors { get; set; }
         public DbSet<Core.Entities.Campaign> Campaigns { get; set; }
