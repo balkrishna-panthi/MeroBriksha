@@ -31,7 +31,8 @@ namespace MeroBriksha.Controllers
         [HttpGet("TestDBConnection")]
         public async Task<IActionResult> TestDBConnection()
         {
-            return false;
+            var canConnect = await _meroBrikshaTestService.TestDBConnectionAsync();            
+            return Ok(canConnect);
         }
 
     }

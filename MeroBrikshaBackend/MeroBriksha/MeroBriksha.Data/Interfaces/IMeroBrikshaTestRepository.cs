@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MeroBriksha.Data.Interfaces
 {
-    internal interface IMeroBrikshaTestRepository
+    public interface IMeroBrikshaTestRepository
     {
-
+        Task<bool> TestDBConnectionAsync();
     }
 }

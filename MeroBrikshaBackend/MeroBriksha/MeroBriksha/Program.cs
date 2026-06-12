@@ -28,7 +28,9 @@ namespace MeroBriksha
             });
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            #region DI
+           
+            #region Dependency Injection
+
             builder.Services.AddTransient<ICampaignServices, CampaignService>();
             builder.Services.AddTransient<ICampaignRepository, CampaignRepository>();
 
@@ -43,6 +45,9 @@ namespace MeroBriksha
 
             builder.Services.AddScoped<ITreeAssignmentRepository, TreeAssignmentRepository>();
             builder.Services.AddScoped<ITreeAssignmentService, TreeAssignmentService>();
+
+            builder.Services.AddScoped<IMeroBrikshaTestService, MeroBrikshaTestService>();
+            builder.Services.AddScoped<IMeroBrikshaTestRepository, MeroBrikshaTestRepository>();
             #endregion
 
             var app = builder.Build();

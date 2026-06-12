@@ -1,4 +1,5 @@
 ﻿using MeroBriksha.Data.DBContext;
+using MeroBriksha.Data.Interfaces;
 using MeroBriksha.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace MeroBriksha.Services.Services
 {
-    internal class MeroBrikshaTestService : IMeroBrikshaTestService
+    public class MeroBrikshaTestService : IMeroBrikshaTestService
     {
         private readonly IMeroBrikshaTestRepository _testRepository;
 
@@ -16,7 +17,7 @@ namespace MeroBriksha.Services.Services
         }
         public async Task<bool> TestDBConnectionAsync()
         {
-            bool canConnect = await _testRepository.Database.CanConnectAsync();
+            bool canConnect = await _testRepository.TestDBConnectionAsync();
             return canConnect;
         }
     }

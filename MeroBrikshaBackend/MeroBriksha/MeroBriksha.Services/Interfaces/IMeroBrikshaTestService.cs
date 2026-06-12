@@ -5,8 +5,8 @@ using System.Text;
 
 namespace MeroBriksha.Services.Interfaces
 {
-    internal interface IMeroBrikshaTestService
+    public interface IMeroBrikshaTestService
     {
-        Task<List<PlantResponse>> GetAllPlantsAsync();
+        Task<bool> TestDBConnectionAsync();
     }
 }

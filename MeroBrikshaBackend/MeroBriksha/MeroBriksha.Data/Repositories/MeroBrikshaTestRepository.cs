@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MeroBriksha.Data.Repositories
 {
-    internal class MeroBrikshaTestRepository : IMeroBrikshaTestRepository
+    public class MeroBrikshaTestRepository : IMeroBrikshaTestRepository
     {
         private readonly AppDbContext _context;
 
