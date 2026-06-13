@@ -30,6 +30,22 @@ public class DonationRepository : IDonationRepository
             .OrderByDescending(x => x.CREATEDDATE)
             .ToListAsync();
     }
+    public async Task<List<DonationByCampaignIdResponse>> GroupByCampaignIDAsync()
+    {
+        return await _context.Donations
+        .GroupBy(x => x.CAMPAIGNID)
+        .ToListAsync();
+    }
+
+    public async Task<List<Donation>> GetTotalAsync()
+    {
+        return await _context.Donations
+            .Include(x => x.Donor)
+            .Include(x => x.Campaign)
+            .OrderByDescending(x => x.CREATEDDATE)
+            .ToListAsync();
+    }
+
 
     public async Task AddAsync(Donation donation)
     {

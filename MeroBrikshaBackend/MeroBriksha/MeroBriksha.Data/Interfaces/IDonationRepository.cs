@@ -8,6 +8,7 @@ namespace MeroBriksha.Data.Interfaces
     public interface IDonationRepository
     {
         Task<Donation?> GetByIdAsync(string id);
+        Task<List<Donation>> GroupByCampaignIDAsync(string CampaignID);
         Task<List<Donation>> GetAllAsync();
         Task AddAsync(Donation donation);
         void Update(Donation donation);
