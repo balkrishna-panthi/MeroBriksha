@@ -46,4 +46,16 @@ public class DonationsController : ControllerBase
         var result = await _donationService.VerifyAsync(id);
         return Ok(result);
     }
+
+    [HttpGet("TotalByCampaignID/{id}")]
+    public async Task<IActionResult> TotalByCampaignID(string id)
+    {
+        var result = await _donationService.TotalDonationByCampaignIdAsync(id);
+
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
+    }
+
 }

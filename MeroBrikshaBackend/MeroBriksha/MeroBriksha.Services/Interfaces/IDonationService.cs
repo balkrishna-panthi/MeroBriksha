@@ -9,6 +9,7 @@ namespace MeroBriksha.Services.Interfaces
     {
         Task<DonationResponse> CreateAsync(CreateDonationRequest request);
         Task<List<DonationResponse>> GetAllAsync();
+        Task<DonationByCampaignIdResponse> TotalDonationByCampaignIdAsync(string id);
         Task<DonationResponse?> GetByIdAsync(string id);
         Task<DonationResponse> VerifyAsync(string id);
     }
