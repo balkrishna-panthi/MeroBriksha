@@ -47,10 +47,10 @@ public class DonationsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("GroupByCampaignID/{id}")]
-    public async Task<IActionResult> GroupByCampaignID(string CampaignID)
+    [HttpGet("TotalByCampaignID/{id}")]
+    public async Task<IActionResult> TotalByCampaignID(string id)
     {
-        var result = await _donationService.GroupByCampaignIDAsync(CampaignID);
+        var result = await _donationService.TotalDonationByCampaignIdAsync(id);
 
         if (result == null)
             return NotFound();

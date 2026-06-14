@@ -129,5 +129,18 @@ namespace MeroBriksha.Services.Services
                 VerifiedDate = donation.VERIFIEDDATE
             };
         }
+
+        public async Task<DonationByCampaignIdResponse> TotalDonationByCampaignIdAsync(string CampaignID)
+        {
+            var donations = await _donationRepository.TotalDonationByCampaignIdAsync(CampaignID);
+
+            return new DonationByCampaignIdResponse
+            {
+                CampaignId = donations.CampaignId,
+                CampaignName = donations.CampaignName,
+                TotalAmount = donations.TotalAmount,
+                DonationCount = donations.DonationCount
+            };
+        }
     }
 }
