@@ -48,7 +48,7 @@ public class DonationsController : ControllerBase
     }
 
     [HttpGet("TotalByCampaignID/{id}")]
-    public async Task<IActionResult> TotalByCampaignID(string id)
+    public async Task<IActionResult> TotalDonationByCampaignID(string id)
     {
         var result = await _donationService.TotalDonationByCampaignIdAsync(id);
 

@@ -38,7 +38,7 @@ public class DonationRepository : IDonationRepository
      // Sum() and Count() are translated into SQL aggregate subqueries, so this returns
      // campaign details, total donation amount, and donation count in a single DB round trip.
 
-
+        var perCampaign = await TotalDonationByCampaignIdAsync();
         var campaignDonation = await _context.Campaigns
                                 .AsNoTracking()
                                 .Where(c => c.ID == id)
@@ -58,6 +58,26 @@ public class DonationRepository : IDonationRepository
                                 .FirstOrDefaultAsync();
 
         return campaignDonation;
+    }
+    public Task<List<CampaignDonationTotalReadModel>> TotalDonationByCampaignIdAsync()
+    {
+        var campaignDonations = _context.Campaigns
+                                .AsNoTracking()
+                                
+                                .Select(c => new CampaignDonationTotalReadModel
+                                {
+                                    CampaignId = c.ID,
+                                    CampaignName = c.NAME,
+                                    TotalAmount = _context.Donations
+                                        .Where(d => d.CAMPAIGNID == c.ID)
+                                        .Select(d => (decimal?)d.AMOUNT)
+                                        .Sum() ?? 0,
+                                    DonationCount = _context.Donations
+                                        .Where(d => d.CAMPAIGNID == c.ID)
+                                        .Count()
+                                })
+                                .ToListAsync(); return campaignDonations;
+        throw new NotImplementedException();
     }
 
     public async Task<List<Donation>> GetTotalAsync()
@@ -84,4 +104,6 @@ public class DonationRepository : IDonationRepository
     {
         await _context.SaveChangesAsync();
     }
+
+   
 }

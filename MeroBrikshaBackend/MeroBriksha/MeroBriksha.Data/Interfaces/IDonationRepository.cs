@@ -10,6 +10,7 @@ namespace MeroBriksha.Data.Interfaces
     {
         Task<Donation?> GetByIdAsync(string id);
         Task<CampaignDonationTotalReadModel> TotalDonationByCampaignIdAsync(string id);
+        Task<List<CampaignDonationTotalReadModel>> TotalDonationByCampaignIdAsync();
         Task<List<Donation>> GetAllAsync();
         Task AddAsync(Donation donation);
         void Update(Donation donation);
