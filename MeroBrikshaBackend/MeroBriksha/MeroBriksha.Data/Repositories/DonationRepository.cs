@@ -78,13 +78,13 @@ public class DonationRepository : IDonationRepository
         return campaignDonations;
     }
 
-    public async Task<List<Donation>> GetTotalAsync()
+    public async Task<decimal> GetTotalAsync()
     {
-        return await _context.Donations
-            .Include(x => x.Donor)
-            .Include(x => x.Campaign)
-            .OrderByDescending(x => x.CREATEDDATE)
-            .ToListAsync();
+        var totalAmount = await _context.Donations
+        .SumAsync(x => (decimal?)x.AMOUNT) ?? 0;
+
+        return totalAmount;
+       
     }
 
 

@@ -65,4 +65,11 @@ public class DonationsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("GetTotal")]
+    public async Task<IActionResult> GetTotal()
+    {
+        var result = await _donationService.GetTotalAsync();
+        return Ok(result);
+    }
+
 }

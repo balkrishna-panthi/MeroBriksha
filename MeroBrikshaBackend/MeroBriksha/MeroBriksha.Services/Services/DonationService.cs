@@ -159,5 +159,16 @@ namespace MeroBriksha.Services.Services
                 PerCampaignDonations = donationsPerCampaignResponse
             };
         }
+
+        
+        public async Task<DonationTotalResponse> GetTotalAsync()
+        {
+            var donations = await _donationRepository.GetTotalAsync();
+
+            return new DonationTotalResponse
+            {
+                TotalAmount = donations
+            };
+        }
     }
 }

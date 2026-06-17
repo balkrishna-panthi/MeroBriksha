@@ -11,6 +11,7 @@ namespace MeroBriksha.Services.Interfaces
         Task<List<DonationResponse>> GetAllAsync();
         Task<DonationByCampaignIdResponse> TotalDonationByCampaignIdAsync(string id);
         Task<DonationPerCampaignResponse> TotalDonationPerCampaignAsync();
+        Task<DonationTotalResponse> GetTotalAsync();
         Task<DonationResponse?> GetByIdAsync(string id);
         Task<DonationResponse> VerifyAsync(string id);
     }
