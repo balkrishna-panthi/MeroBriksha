@@ -37,8 +37,7 @@ public class DonationRepository : IDonationRepository
      // EF Core builds one SQL command when FirstOrDefaultAsync() is called.
      // Sum() and Count() are translated into SQL aggregate subqueries, so this returns
      // campaign details, total donation amount, and donation count in a single DB round trip.
-
-        var perCampaign = await TotalDonationByCampaignIdAsync();
+        
         var campaignDonation = await _context.Campaigns
                                 .AsNoTracking()
                                 .Where(c => c.ID == id)
@@ -59,11 +58,10 @@ public class DonationRepository : IDonationRepository
 
         return campaignDonation;
     }
-    public Task<List<CampaignDonationTotalReadModel>> TotalDonationByCampaignIdAsync()
+    public Task<List<CampaignDonationTotalReadModel>> TotalDonationPerCampaignAsync()
     {
         var campaignDonations = _context.Campaigns
-                                .AsNoTracking()
-                                
+                                .AsNoTracking()                                
                                 .Select(c => new CampaignDonationTotalReadModel
                                 {
                                     CampaignId = c.ID,
@@ -76,8 +74,8 @@ public class DonationRepository : IDonationRepository
                                         .Where(d => d.CAMPAIGNID == c.ID)
                                         .Count()
                                 })
-                                .ToListAsync(); return campaignDonations;
-        throw new NotImplementedException();
+                                .ToListAsync();
+        return campaignDonations;
     }
 
     public async Task<List<Donation>> GetTotalAsync()

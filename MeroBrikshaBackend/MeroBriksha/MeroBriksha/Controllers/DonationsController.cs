@@ -58,4 +58,11 @@ public class DonationsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("TotalPerCampaign")]
+    public async Task<IActionResult> TotalDonationPerCampaign()
+    {
+        var result = await _donationService.TotalDonationPerCampaignAsync();
+        return Ok(result);
+    }
+
 }

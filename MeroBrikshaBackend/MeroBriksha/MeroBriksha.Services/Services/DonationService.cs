@@ -130,9 +130,9 @@ namespace MeroBriksha.Services.Services
             };
         }
 
-        public async Task<DonationByCampaignIdResponse> TotalDonationByCampaignIdAsync(string CampaignID)
+        public async Task<DonationByCampaignIdResponse> TotalDonationByCampaignIdAsync(string CampaignId)
         {
-            var donations = await _donationRepository.TotalDonationByCampaignIdAsync(CampaignID);
+            var donations = await _donationRepository.TotalDonationByCampaignIdAsync(CampaignId);
 
             return new DonationByCampaignIdResponse
             {
@@ -140,6 +140,23 @@ namespace MeroBriksha.Services.Services
                 CampaignName = donations.CampaignName,
                 TotalAmount = donations.TotalAmount,
                 DonationCount = donations.DonationCount
+            };
+        }
+
+        public async Task<DonationPerCampaignResponse> TotalDonationPerCampaignAsync()
+        {
+           var donationsPerCampaign = await _donationRepository.TotalDonationPerCampaignAsync();
+            var donationsPerCampaignResponse = donationsPerCampaign.Select(d => new DonationByCampaignIdResponse
+            {
+                CampaignId = d.CampaignId,
+                CampaignName = d.CampaignName,
+                TotalAmount = d.TotalAmount,
+                DonationCount = d.DonationCount
+            }).ToList();
+
+            return new DonationPerCampaignResponse
+            {
+                PerCampaignDonations = donationsPerCampaignResponse
             };
         }
     }
