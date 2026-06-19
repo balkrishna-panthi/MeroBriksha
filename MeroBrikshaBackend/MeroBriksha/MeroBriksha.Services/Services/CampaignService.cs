@@ -2,6 +2,7 @@
 using MeroBriksha.Data.Interfaces;
 using MeroBriksha.Services.DTOs.CampaignDTOs;
 using MeroBriksha.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -69,7 +70,30 @@ namespace MeroBriksha.Services.Services
             };
             throw new NotImplementedException();
         }
+        public async Task<CampaignResponse> UpdateCampaignAsync(UpdateCampaignRequest request)
+        {
 
+            var campaign = await _campaignRepository.GetCampaignByIdAsync(request.Id);
 
+            if (campaign == null)
+            {
+                throw new ValidationException($"Campaign with ID {request.Id} not found.");
+            }
+
+            campaign.NAME = request.Name;
+            campaign.DESCRIPTION = request.Description;
+            campaign.ORGANIZERNAME = request.OrganizerName;
+
+            var updatedCampaign = await _campaignRepository.UpdateCampaignAsync(campaign);
+
+            return new CampaignResponse
+            {
+                Id = updatedCampaign.ID,
+                Name = updatedCampaign.NAME,
+                Description = updatedCampaign.DESCRIPTION,
+                OrganizerName = updatedCampaign.ORGANIZERNAME
+                
+            };
+        }
     }
 }

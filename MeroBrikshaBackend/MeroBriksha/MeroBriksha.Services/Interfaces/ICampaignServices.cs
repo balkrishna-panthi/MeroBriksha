@@ -10,5 +10,6 @@ namespace MeroBriksha.Services.Interfaces
         Task<List<CampaignResponse>> GetAllCampaignsAsync();
         Task<CampaignResponse> GetCampaignByIdAsync(string id);
         Task<CampaignResponse> CreateCampaignAsync(CreateCampaignRequest request);
+        Task<CampaignResponse> UpdateCampaignAsync(UpdateCampaignRequest request);
     }
 }

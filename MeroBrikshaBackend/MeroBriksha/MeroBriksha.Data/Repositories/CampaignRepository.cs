@@ -31,7 +31,23 @@ namespace MeroBriksha.Data.Repositories
             await _context.SaveChangesAsync();
             return campaign;
         }
+        public async Task<Campaign> UpdateCampaignAsync(Campaign campaign)
+        {
+            var existingCampaign = await _context.Campaigns
+       .FirstOrDefaultAsync(x => x.ID == campaign.ID);
 
+            if (existingCampaign == null)
+            {
+                return null;
+            }
 
+            existingCampaign.NAME = campaign.NAME;
+            existingCampaign.DESCRIPTION = campaign.DESCRIPTION;
+            existingCampaign.ORGANIZERNAME = campaign.ORGANIZERNAME;
+
+            await _context.SaveChangesAsync();
+
+            return existingCampaign;
+        }
     }
 }

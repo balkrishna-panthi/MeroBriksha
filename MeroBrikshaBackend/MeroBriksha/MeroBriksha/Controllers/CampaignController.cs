@@ -26,5 +26,12 @@ namespace MeroBriksha.Controllers
             var campaign = await _campaignServices.CreateCampaignAsync(campaignRequest);
             return Ok(campaign);
         }
+
+        [HttpPost("Update")]
+        public async Task<IActionResult> UpdateCampaign(UpdateCampaignRequest campaignRequest)
+        {
+            var campaign = await _campaignServices.UpdateCampaignAsync(campaignRequest);
+            return Ok(campaign);
+        }
     }
 }
