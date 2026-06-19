@@ -1,7 +1,9 @@
 ﻿using MeroBriksha.Core.Entities;
 using MeroBriksha.Data.Interfaces;
+using MeroBriksha.Services.Constants;
 using MeroBriksha.Services.DTOs.CampaignDTOs;
 using MeroBriksha.Services.Interfaces;
+using MeroBriksha.Services.Services.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -33,7 +35,7 @@ namespace MeroBriksha.Services.Services
             var campaign = await _campaignRepository.GetCampaignByIdAsync(id);
             if (campaign == null)
             {
-                throw new ValidationException($"Campaign with ID {id} not found.");
+                throw new NotFoundException(ErrorMessages.CampaignNotFoundById(id));
             }
             return new CampaignResponse
             {

@@ -1,8 +1,10 @@
 ﻿using MeroBriksha.Core.Entities;
 using MeroBriksha.Core.Enums;
 using MeroBriksha.Data.Interfaces;
+using MeroBriksha.Services.Constants;
 using MeroBriksha.Services.DTOs.DonationDTOs;
 using MeroBriksha.Services.Interfaces;
+using MeroBriksha.Services.Services.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,15 +30,15 @@ namespace MeroBriksha.Services.Services
         public async Task<DonationResponse> CreateAsync(CreateDonationRequest request)
         {
             if (request.Amount <= 0)
-                throw new Exception("Donation amount must be greater than zero.");
+                throw new Exception(ErrorMessages.DonationMustGreaterThanZero);
 
             var donor = await _donorRepository.GetDonorByIdAsync(request.DonorId);
             if (donor == null)
-                throw new Exception("Donor not found.");
+                throw new NotFoundException(ErrorMessages.DonationNotFound);
 
             var campaign = await _campaignRepository.GetCampaignByIdAsync(request.CampaignId);
             if (campaign == null)
-                throw new Exception("Campaign not found.");
+                throw new NotFoundException(ErrorMessages.CampaignNotFound);
 
             var donation = new Donation
             {
@@ -90,13 +92,13 @@ namespace MeroBriksha.Services.Services
             var donation = await _donationRepository.GetByIdAsync(id);
 
             if (donation == null)
-                throw new Exception("Donation not found.");
+                throw new NotFoundException(ErrorMessages.DonationNotFound);
 
             if (donation.STATUS == DonationStatus.Verified)
-                throw new Exception("Donation is already verified.");
+                throw new ConflictException(ErrorMessages.DonationAlreadyVerified);
 
             if (donation.STATUS == DonationStatus.Rejected)
-                throw new Exception("Rejected donation cannot be verified.");
+                throw new ConflictException(ErrorMessages.DonationRejectedCannotVerify);
 
             donation.STATUS = DonationStatus.Verified;
             donation.VERIFIEDDATE = DateTime.UtcNow;

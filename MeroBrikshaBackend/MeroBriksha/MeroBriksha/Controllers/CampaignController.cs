@@ -20,6 +20,12 @@ namespace MeroBriksha.Controllers
             return Ok(await _campaignServices.GetAllCampaignsAsync());
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCampaignByIdAsync(string id)
+        {
+            var campaign = await _campaignServices.GetCampaignByIdAsync(id);
+            return Ok(campaign);
+        }
         [HttpPost("Create")]
         public async Task<IActionResult> CreateCampaign(CreateCampaignRequest campaignRequest)
         {
