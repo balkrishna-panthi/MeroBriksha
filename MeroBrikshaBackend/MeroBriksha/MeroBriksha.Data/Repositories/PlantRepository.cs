@@ -18,5 +18,47 @@ namespace MeroBriksha.Data.Repositories
         {
             return await _context.Plants.ToListAsync();
         }
+        public async Task<Plant?> GetPlantByIdAsync(string id)
+        {
+            return await _context.Plants.FindAsync(id);
+        }
+        public async Task<Plant> CreatePlantAsync(Plant plant)
+        {
+            _context.Add(plant);
+            await _context.SaveChangesAsync();
+            return plant;
+        }
+        public async Task<Plant> UpdatePlantAsync(Plant plant)
+        {
+            var existingPlant = await _context.Plants.FindAsync(plant.ID);
+
+            if (existingPlant == null)
+            {
+                return null;
+            }
+
+            existingPlant.NAME = plant.NAME;
+            existingPlant.SPECIES = plant.SPECIES;
+            existingPlant.SCIENTIFICNAME = plant.SCIENTIFICNAME;
+            existingPlant.DESCRIPTION = plant.DESCRIPTION;
+            
+
+            await _context.SaveChangesAsync();
+
+            return existingPlant;
+        }
+
+        public async Task<bool> DeletePlantAsync(string id)
+        {
+            var plant = await _context.Plants.FindAsync(id);
+
+            if (plant == null)
+                return false;
+
+            _context.Plants.Remove(plant);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

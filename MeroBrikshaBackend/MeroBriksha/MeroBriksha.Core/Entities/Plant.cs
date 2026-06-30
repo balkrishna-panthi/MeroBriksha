@@ -14,6 +14,7 @@ namespace MeroBriksha.Core.Entities
         public string ID { get; set; }
 
         public string NAME { get; set; }
+        public string SPECIES {  get; set; }
         public string? SCIENTIFICNAME { get; set; }
 
         public string? DESCRIPTION { get; set; }

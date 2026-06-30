@@ -1,5 +1,8 @@
 ﻿using MeroBriksha.Data.Interfaces;
+using MeroBriksha.Services.DTOs.CampaignDTOs;
+using MeroBriksha.Services.DTOs.PlantDtos;
 using MeroBriksha.Services.Interfaces;
+using MeroBriksha.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeroBriksha.Controllers
@@ -20,5 +23,30 @@ namespace MeroBriksha.Controllers
             var plants = await _plantService.GetAllPlantsAsync();
             return Ok(plants);
         }
+
+        [HttpPost("Create")]
+        public async Task<IActionResult> CreatePlant(CreatePlantResponse plantResponse)
+        {
+            var plant = await _plantService.CreatePlantAsync(plantResponse);
+            return Ok(plant);
+        }
+
+        [HttpPost("Update")]
+        public async Task<IActionResult> UpdatePlant(UpdatePlantResponse plantResponse)
+        {
+            var plant = await _plantService.UpdatePlantAsync(plantResponse);
+            return Ok(plant);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var deleted = await _plantService.DeletePlantAsync(id);
+
+            if (!deleted)
+                return NotFound();
+
+            return NoContent();
+        }
+
     }
 }
