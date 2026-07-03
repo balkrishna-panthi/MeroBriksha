@@ -5,24 +5,24 @@
 namespace MeroBriksha.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddSpeciesColumnToPlantsTable : Migration
+    public partial class AddSelectPlanttoTreeAssignment : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropForeignKey(
+                name: "FK_TreeAssignments_Plants_PLANTID",
+                table: "TreeAssignments");
+
+            migrationBuilder.AlterColumn<string>(
                 name: "PLANTID",
                 table: "TreeAssignments",
                 type: "nvarchar(50)",
                 nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "SPECIES",
-                table: "Plants",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(50)",
+                oldNullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TreeAssignments_PLANTID",
@@ -35,7 +35,7 @@ namespace MeroBriksha.Data.Migrations
                 column: "PLANTID",
                 principalTable: "Plants",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
         }
 
         /// <inheritdoc />
@@ -49,13 +49,21 @@ namespace MeroBriksha.Data.Migrations
                 name: "IX_TreeAssignments_PLANTID",
                 table: "TreeAssignments");
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.AlterColumn<string>(
                 name: "PLANTID",
-                table: "TreeAssignments");
+                table: "TreeAssignments",
+                type: "nvarchar(50)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(50)");
 
-            migrationBuilder.DropColumn(
-                name: "SPECIES",
-                table: "Plants");
+            migrationBuilder.AddForeignKey(
+                name: "FK_TreeAssignments_Plants_PLANTID",
+                table: "TreeAssignments",
+                column: "PLANTID",
+                principalTable: "Plants",
+                principalColumn: "ID",
+                onDelete: ReferentialAction.Cascade);
         }
     }
 }

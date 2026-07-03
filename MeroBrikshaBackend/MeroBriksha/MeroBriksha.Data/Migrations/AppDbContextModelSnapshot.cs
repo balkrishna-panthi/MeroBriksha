@@ -250,7 +250,7 @@ namespace MeroBriksha.Data.Migrations
                     b.HasOne("MeroBriksha.Core.Entities.Plant", "Plant")
                         .WithMany()
                         .HasForeignKey("PLANTID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Donation");
