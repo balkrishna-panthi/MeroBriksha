@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MeroBriksha.Services.DTOs.PlantDtos
 {
-    public class CreatePlantResponse
+    public class CreatePlantRequest
     {
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;

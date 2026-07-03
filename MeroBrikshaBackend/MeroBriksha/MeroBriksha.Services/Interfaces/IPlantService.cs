@@ -7,8 +7,8 @@ namespace MeroBriksha.Services.Interfaces
     {
         Task<List<PlantResponse>> GetAllPlantsAsync();
         Task<PlantResponse> GetPlantByIdAsync(string id);
-        Task<PlantResponse> CreatePlantAsync(CreatePlantResponse response);
-        Task<PlantResponse> UpdatePlantAsync(UpdatePlantResponse response);
+        Task<PlantResponse> CreatePlantAsync(CreatePlantRequest request);
+        Task<PlantResponse> UpdatePlantAsync(UpdatePlantRequest request);
         Task<bool> DeletePlantAsync(string id);
     }
 }

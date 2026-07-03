@@ -25,14 +25,14 @@ namespace MeroBriksha.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> CreatePlant(CreatePlantResponse plantResponse)
+        public async Task<IActionResult> CreatePlant(CreatePlantRequest plantResponse)
         {
             var plant = await _plantService.CreatePlantAsync(plantResponse);
             return Ok(plant);
         }
 
         [HttpPost("Update")]
-        public async Task<IActionResult> UpdatePlant(UpdatePlantResponse plantResponse)
+        public async Task<IActionResult> UpdatePlant(UpdatePlantRequest plantResponse)
         {
             var plant = await _plantService.UpdatePlantAsync(plantResponse);
             return Ok(plant);

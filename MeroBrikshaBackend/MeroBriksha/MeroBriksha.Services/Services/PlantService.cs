@@ -46,14 +46,14 @@ namespace MeroBriksha.Services.Services
             };
         }
 
-        public async Task<PlantResponse> CreatePlantAsync(CreatePlantResponse response)
+        public async Task<PlantResponse> CreatePlantAsync(CreatePlantRequest request)
         {
             var plant = new Plant
             {
-                NAME = response.Name,
-                SPECIES = response.Species,
-                SCIENTIFICNAME = response.ScientificName,
-                DESCRIPTION = response.Description
+                NAME = request.Name,
+                SPECIES = request.Species,
+                SCIENTIFICNAME = request.ScientificName,
+                DESCRIPTION = request.Description
             };
 
             var createdPlant = await _plantRepository.CreatePlantAsync(plant);
@@ -68,7 +68,7 @@ namespace MeroBriksha.Services.Services
             };
         }
 
-        public async Task<PlantResponse?> UpdatePlantAsync(UpdatePlantResponse request)
+        public async Task<PlantResponse?> UpdatePlantAsync(UpdatePlantRequest request)
         {
             var plant = new Plant
             {
