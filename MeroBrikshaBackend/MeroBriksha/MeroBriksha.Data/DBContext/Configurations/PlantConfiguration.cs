@@ -23,6 +23,9 @@ namespace MeroBriksha.Data.Configurations
 
             builder.Property(x => x.SCIENTIFICNAME)
                 .HasMaxLength(150);
+            builder.Property(x => x.SPECIES)
+                .IsRequired()
+               .HasMaxLength(100);
 
             builder.Property(x => x.DESCRIPTION)
                 .HasMaxLength(500);

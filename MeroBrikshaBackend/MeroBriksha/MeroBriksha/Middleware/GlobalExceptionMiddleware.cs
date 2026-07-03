@@ -44,7 +44,7 @@ namespace MeroBriksha.Middleware
             {
                 NotFoundException => (int)HttpStatusCode.NotFound,
                 ValidationException => (int)HttpStatusCode.BadRequest,
-                //ConflictException => (int)HttpStatusCode.Conflict,
+                ConflictException => (int)HttpStatusCode.Conflict,
                 _ => (int)HttpStatusCode.InternalServerError
             };
 

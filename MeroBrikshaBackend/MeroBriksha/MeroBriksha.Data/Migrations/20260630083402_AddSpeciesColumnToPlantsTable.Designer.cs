@@ -4,6 +4,7 @@ using MeroBriksha.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeroBriksha.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260630083402_AddSpeciesColumnToPlantsTable")]
+    partial class AddSpeciesColumnToPlantsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,10 +201,6 @@ namespace MeroBriksha.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("DONATIONID");
 
-                    b.Property<string>("PLANTID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("REMARKS")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)")
@@ -214,8 +213,6 @@ namespace MeroBriksha.Data.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("DONATIONID");
-
-                    b.HasIndex("PLANTID");
 
                     b.ToTable("TreeAssignments", (string)null);
                 });
@@ -247,15 +244,7 @@ namespace MeroBriksha.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("MeroBriksha.Core.Entities.Plant", "Plant")
-                        .WithMany()
-                        .HasForeignKey("PLANTID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Donation");
-
-                    b.Navigation("Plant");
                 });
 #pragma warning restore 612, 618
         }
