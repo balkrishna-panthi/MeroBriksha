@@ -5,7 +5,7 @@
 namespace MeroBriksha.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddPlantIdColumnToTreeAssignment : Migration
+    public partial class AddSpeciesColumnToPlantsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,8 +14,14 @@ namespace MeroBriksha.Data.Migrations
                 name: "PLANTID",
                 table: "TreeAssignments",
                 type: "nvarchar(50)",
-                maxLength: 50,
-                nullable: true,
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "SPECIES",
+                table: "Plants",
+                type: "nvarchar(max)",
+                nullable: false,
                 defaultValue: "");
 
             migrationBuilder.CreateIndex(
@@ -29,7 +35,7 @@ namespace MeroBriksha.Data.Migrations
                 column: "PLANTID",
                 principalTable: "Plants",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
@@ -46,6 +52,10 @@ namespace MeroBriksha.Data.Migrations
             migrationBuilder.DropColumn(
                 name: "PLANTID",
                 table: "TreeAssignments");
+
+            migrationBuilder.DropColumn(
+                name: "SPECIES",
+                table: "Plants");
         }
     }
 }

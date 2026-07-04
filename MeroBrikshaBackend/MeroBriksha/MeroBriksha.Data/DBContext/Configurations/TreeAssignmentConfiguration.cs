@@ -35,10 +35,6 @@ public class TreeAssignmentConfiguration : IEntityTypeConfiguration<TreeAssignme
             .HasColumnName("CREATEDDATE")
             .HasDefaultValueSql("GETUTCDATE()")
             .ValueGeneratedOnAdd();
-        builder.Property(x => x.PLANTID)
-            .HasColumnName("PLANTID")
-            .HasMaxLength(50)
-            .IsRequired();
 
         // IMPORTANT:
         // Explicit FK configuration is used because entity/database-facing properties
@@ -50,9 +46,5 @@ public class TreeAssignmentConfiguration : IEntityTypeConfiguration<TreeAssignme
             .OnDelete(DeleteBehavior.Restrict); //This means if a donation already has tree assignments,
                                                 //deleting that donation should not automatically delete
                                                 //the tree assignment history.
-        builder.HasOne(x => x.Plant) //has one plant,
-            .WithMany()               //but a plant can have many tree assignments. This is a one-to-many relationship.
-            .HasForeignKey(x => x.PLANTID)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }
