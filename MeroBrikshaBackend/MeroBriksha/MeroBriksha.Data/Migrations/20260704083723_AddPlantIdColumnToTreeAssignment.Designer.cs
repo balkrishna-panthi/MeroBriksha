@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeroBriksha.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260703124550_AddSpeciesColumnToPlantsTable")]
-    partial class AddSpeciesColumnToPlantsTable
+    [Migration("20260704083723_AddPlantIdColumnToTreeAssignment")]
+    partial class AddPlantIdColumnToTreeAssignment
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -174,7 +174,8 @@ namespace MeroBriksha.Data.Migrations
 
                     b.Property<string>("SPECIES")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("ID");
 
@@ -202,7 +203,9 @@ namespace MeroBriksha.Data.Migrations
 
                     b.Property<string>("PLANTID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("PLANTID");
 
                     b.Property<string>("REMARKS")
                         .HasMaxLength(500)
@@ -252,7 +255,7 @@ namespace MeroBriksha.Data.Migrations
                     b.HasOne("MeroBriksha.Core.Entities.Plant", "Plant")
                         .WithMany()
                         .HasForeignKey("PLANTID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Donation");

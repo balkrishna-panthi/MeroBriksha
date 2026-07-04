@@ -200,7 +200,9 @@ namespace MeroBriksha.Data.Migrations
 
                     b.Property<string>("PLANTID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("PLANTID");
 
                     b.Property<string>("REMARKS")
                         .HasMaxLength(500)
@@ -250,7 +252,7 @@ namespace MeroBriksha.Data.Migrations
                     b.HasOne("MeroBriksha.Core.Entities.Plant", "Plant")
                         .WithMany()
                         .HasForeignKey("PLANTID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Donation");
