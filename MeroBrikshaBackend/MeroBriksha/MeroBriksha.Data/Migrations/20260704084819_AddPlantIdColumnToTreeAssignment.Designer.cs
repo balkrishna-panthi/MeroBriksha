@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeroBriksha.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260703143741_AddSelectPlanttoTreeAssignment")]
-    partial class AddSelectPlanttoTreeAssignment
+    [Migration("20260704084819_AddPlantIdColumnToTreeAssignment")]
+    partial class AddPlantIdColumnToTreeAssignment
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

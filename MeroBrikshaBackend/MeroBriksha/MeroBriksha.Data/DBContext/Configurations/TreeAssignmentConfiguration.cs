@@ -47,8 +47,8 @@ public class TreeAssignmentConfiguration : IEntityTypeConfiguration<TreeAssignme
                                                 //deleting that donation should not automatically delete
                                                 //the tree assignment history.
         builder.HasOne(x => x.Plant)          //has one plant,
-         .WithMany()                          //but a plant can have many tree assignments. This is a one-to-many relationship.
-        .HasForeignKey(x => x.PLANTID)
-        .OnDelete(DeleteBehavior.Restrict);
+            .WithMany()                          //but a plant can have many tree assignments. This is a one-to-many relationship.
+            .HasForeignKey(x => x.PLANTID)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
