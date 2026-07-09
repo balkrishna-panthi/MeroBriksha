@@ -18,8 +18,7 @@ namespace MeroBriksha.Core.Entities
 
         public DateTime CREATEDDATE { get; set; }
         public string? PLANTID { get; set; }
-        public Plant Plant { get; set; }
-
+        public Plant Plant { get; set; } 
         public string? LOCATIONID { get; set; }
         public Location Location { get; set; }
     }

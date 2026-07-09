@@ -17,7 +17,7 @@ public class DonationRepository : IDonationRepository
 
     public async Task<Donation?> GetByIdAsync(string id)
     {
-        return await _context.Donations
+        return await _context.Donations.AsNoTracking()
             .Include(x => x.Donor)
             .Include(x => x.Campaign)
             .FirstOrDefaultAsync(x => x.ID == id);
@@ -25,7 +25,7 @@ public class DonationRepository : IDonationRepository
 
     public async Task<List<Donation>> GetAllAsync()
     {
-        return await _context.Donations
+        return await _context.Donations.AsNoTracking()  
             .Include(x => x.Donor)
             .Include(x => x.Campaign)
             .OrderByDescending(x => x.CREATEDDATE)
@@ -46,11 +46,11 @@ public class DonationRepository : IDonationRepository
                                     CampaignId = c.ID,
                                     CampaignName = c.NAME,
 
-                                    TotalAmount = _context.Donations
+                                    TotalAmount = _context.Donations.AsNoTracking()
                                         .Where(d => d.CAMPAIGNID == c.ID)
                                         .Select(d => (decimal?)d.AMOUNT)
                                         .Sum() ?? 0,
-                                    DonationCount = _context.Donations
+                                    DonationCount = _context.Donations.AsNoTracking()
                                         .Where(d => d.CAMPAIGNID == c.ID)
                                         .Count()
                                 })
@@ -66,11 +66,11 @@ public class DonationRepository : IDonationRepository
                                 {
                                     CampaignId = c.ID,
                                     CampaignName = c.NAME,
-                                    TotalAmount = _context.Donations
+                                    TotalAmount = _context.Donations.AsNoTracking()
                                         .Where(d => d.CAMPAIGNID == c.ID)
                                         .Select(d => (decimal?)d.AMOUNT)
                                         .Sum() ?? 0,
-                                    DonationCount = _context.Donations
+                                    DonationCount = _context.Donations.AsNoTracking()
                                         .Where(d => d.CAMPAIGNID == c.ID)
                                         .Count()
                                 })
@@ -80,7 +80,7 @@ public class DonationRepository : IDonationRepository
 
     public async Task<decimal> GetTotalAsync()
     {
-        var totalAmount = await _context.Donations
+        var totalAmount = await _context.Donations.AsNoTracking()
         .SumAsync(x => (decimal?)x.AMOUNT) ?? 0;
 
         return totalAmount;

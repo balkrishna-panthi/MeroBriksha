@@ -14,9 +14,7 @@ namespace MeroBriksha.Data.Migrations
                 name: "LOCATIONID",
                 table: "TreeAssignments",
                 type: "nvarchar(50)",
-                maxLength: 50,
-                nullable: false,
-                defaultValue: "");
+                nullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TreeAssignments_LOCATIONID",
@@ -28,8 +26,7 @@ namespace MeroBriksha.Data.Migrations
                 table: "TreeAssignments",
                 column: "LOCATIONID",
                 principalTable: "Locations",
-                principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "ID");
         }
 
         /// <inheritdoc />

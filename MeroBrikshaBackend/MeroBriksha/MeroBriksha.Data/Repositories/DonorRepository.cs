@@ -16,12 +16,12 @@ namespace MeroBriksha.Data.Repositories
 
         public async Task<List<Donor>> GetAllDonorsAsync()
         {
-            return await _context.Donors.ToListAsync();
+            return await _context.Donors.AsNoTracking().ToListAsync();
         }
 
         public async Task<Donor> GetDonorByIdAsync(string id)
         {
-            var donor = await _context.Donors.FirstOrDefaultAsync(d => d.ID == id);
+            var donor = await _context.Donors.AsNoTracking().FirstOrDefaultAsync(d => d.ID == id);
 
             return donor;
         }

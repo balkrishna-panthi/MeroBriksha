@@ -7,11 +7,11 @@ using System.Text;
 
 namespace MeroBriksha.Data.Repositories
 {
-    public class LocationAssignment : ILocationRepository
+    public class LocationRepository : ILocationRepository
     {
         private readonly AppDbContext _context;
 
-        public LocationAssignment(AppDbContext context)
+        public LocationRepository(AppDbContext context)
         {
             _context = context;
         }

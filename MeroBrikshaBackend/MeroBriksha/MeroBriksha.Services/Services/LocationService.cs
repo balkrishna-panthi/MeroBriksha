@@ -25,6 +25,10 @@ namespace MeroBriksha.Services.Services
             {
                 throw new ArgumentException("Tree assignment not found");
             }
+            if(treeAssignmentExists != null &&(treeAssignmentExists.LOCATIONID != null || treeAssignmentExists.LOCATIONID != ""))
+            {
+                throw new InvalidOperationException("Location already assigned to this tree assignment");
+            }
 
             Location newLocation = new Location
             {

@@ -18,11 +18,11 @@ namespace MeroBriksha.Data.Repositories
         }
         public async Task<List<Campaign>> GetAllCampaignsAsync()
         {
-            return await _context.Campaigns.ToListAsync();
+            return await _context.Campaigns.AsNoTracking().ToListAsync();
         }
         public async Task<Campaign> GetCampaignByIdAsync(string id)
         {
-            var campaign = await _context.Campaigns.FirstOrDefaultAsync(x => x.ID == id);
+            var campaign = await _context.Campaigns.AsNoTracking().FirstOrDefaultAsync(x => x.ID == id);
             return campaign;
         }
         public async Task<Campaign> CreateCampaignAsync(Campaign campaign)

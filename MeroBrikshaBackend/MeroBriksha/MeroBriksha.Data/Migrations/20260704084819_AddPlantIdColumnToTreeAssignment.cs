@@ -14,7 +14,7 @@ namespace MeroBriksha.Data.Migrations
                 name: "PLANTID",
                 table: "TreeAssignments",
                 type: "nvarchar(50)",
-                nullable: false,
+                nullable: true,
                 defaultValue: "");
 
             migrationBuilder.CreateIndex(

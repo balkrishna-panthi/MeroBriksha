@@ -16,7 +16,7 @@ namespace MeroBriksha.Data.Repositories
 
         public async Task<List<Plant>> GetAllPlantsAsync()
         {
-            return await _context.Plants.ToListAsync();
+            return await _context.Plants.AsNoTracking().ToListAsync();
         }
         public async Task<Plant?> GetPlantByIdAsync(string id)
         {

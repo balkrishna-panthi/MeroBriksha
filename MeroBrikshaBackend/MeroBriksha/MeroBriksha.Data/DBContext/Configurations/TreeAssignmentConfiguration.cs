@@ -38,9 +38,9 @@ public class TreeAssignmentConfiguration : IEntityTypeConfiguration<TreeAssignme
         builder.Property(x => x.PLANTID)
            .HasColumnName("PLANTID")
            .HasMaxLength(50);
-        builder.Property(x => x.LOCATIONID)
-           .HasColumnName("LOCATIONID")
-           .HasMaxLength(50);
+        builder.Property(x => x.PLANTID)
+          .HasColumnName("PLANTID")
+          .HasMaxLength(50);
         // IMPORTANT:
         // Explicit FK configuration is used because entity/database-facing properties
         // follow UPPERCASE naming. This avoids EF Core convention ambiguity and prevents

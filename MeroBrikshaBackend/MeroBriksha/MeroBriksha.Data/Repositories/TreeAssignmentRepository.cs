@@ -19,7 +19,7 @@ namespace MeroBriksha.Data.Repositories
 
         public async Task<TreeAssignment?> GetByIdAsync(string id)
         {
-            return await _context.TreeAssignments
+            return await _context.TreeAssignments.AsNoTracking()
                 .Include(x => x.Donation)
                     .ThenInclude(x => x.Donor)
                 .Include(x => x.Donation)
@@ -43,7 +43,7 @@ namespace MeroBriksha.Data.Repositories
             //Load TreeAssignment
             //Then load related Donation
             //Then load Donation's related Donor
-            return await _context.TreeAssignments
+            return await _context.TreeAssignments.AsNoTracking()
                 .Include(x => x.Donation)
                     .ThenInclude(x => x.Donor)
                 .Include(x => x.Donation)

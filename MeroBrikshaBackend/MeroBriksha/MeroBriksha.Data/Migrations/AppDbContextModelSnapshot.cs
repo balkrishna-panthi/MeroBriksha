@@ -235,13 +235,9 @@ namespace MeroBriksha.Data.Migrations
                         .HasColumnName("DONATIONID");
 
                     b.Property<string>("LOCATIONID")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("LOCATIONID");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PLANTID")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("PLANTID");
@@ -295,15 +291,12 @@ namespace MeroBriksha.Data.Migrations
 
                     b.HasOne("MeroBriksha.Core.Entities.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("LOCATIONID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LOCATIONID");
 
                     b.HasOne("MeroBriksha.Core.Entities.Plant", "Plant")
                         .WithMany()
                         .HasForeignKey("PLANTID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Donation");
 
