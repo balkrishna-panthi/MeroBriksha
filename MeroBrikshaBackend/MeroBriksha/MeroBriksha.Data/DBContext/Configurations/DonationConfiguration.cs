@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MeroBriksha.Data.Configurations;
+namespace MeroBriksha.Data.DBContext.Configurations;
 
 public class DonationConfiguration : IEntityTypeConfiguration<Donation>
 {

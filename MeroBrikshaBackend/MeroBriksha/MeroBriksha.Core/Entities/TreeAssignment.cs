@@ -20,5 +20,7 @@ namespace MeroBriksha.Core.Entities
         public string PLANTID { get; set; }
         public Plant Plant { get; set; }
 
+        public string? LOCATIONID { get; set; }
+        public Location Location { get; set; }
     }
 }

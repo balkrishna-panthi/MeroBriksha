@@ -4,6 +4,7 @@ using MeroBriksha.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeroBriksha.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260709131059_AddLocationsTable")]
+    partial class AddLocationsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,12 +237,6 @@ namespace MeroBriksha.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("DONATIONID");
 
-                    b.Property<string>("LOCATIONID")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("LOCATIONID");
-
                     b.Property<string>("PLANTID")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -258,8 +255,6 @@ namespace MeroBriksha.Data.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("DONATIONID");
-
-                    b.HasIndex("LOCATIONID");
 
                     b.HasIndex("PLANTID");
 
@@ -293,12 +288,6 @@ namespace MeroBriksha.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("MeroBriksha.Core.Entities.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LOCATIONID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MeroBriksha.Core.Entities.Plant", "Plant")
                         .WithMany()
                         .HasForeignKey("PLANTID")
@@ -306,8 +295,6 @@ namespace MeroBriksha.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Donation");
-
-                    b.Navigation("Location");
 
                     b.Navigation("Plant");
                 });

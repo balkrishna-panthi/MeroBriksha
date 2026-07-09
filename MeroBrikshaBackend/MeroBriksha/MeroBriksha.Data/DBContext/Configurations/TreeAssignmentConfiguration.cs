@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MeroBriksha.Data.Configurations;
+namespace MeroBriksha.Data.DBContext.Configurations;
 
 public class TreeAssignmentConfiguration : IEntityTypeConfiguration<TreeAssignment>
 {
@@ -35,7 +35,14 @@ public class TreeAssignmentConfiguration : IEntityTypeConfiguration<TreeAssignme
             .HasColumnName("CREATEDDATE")
             .HasDefaultValueSql("GETUTCDATE()")
             .ValueGeneratedOnAdd();
-
+        builder.Property(x => x.PLANTID)
+           .HasColumnName("PLANTID")
+           .HasMaxLength(50)
+           .IsRequired();
+        builder.Property(x => x.LOCATIONID)
+           .HasColumnName("LOCATIONID")
+           .HasMaxLength(50)
+           .IsRequired();
         // IMPORTANT:
         // Explicit FK configuration is used because entity/database-facing properties
         // follow UPPERCASE naming. This avoids EF Core convention ambiguity and prevents
