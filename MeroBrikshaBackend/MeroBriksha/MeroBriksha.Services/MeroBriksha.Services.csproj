@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\PlantSelectionDTOs\**" />
+    <EmbeddedResource Remove="DTOs\PlantSelectionDTOs\**" />
+    <None Remove="DTOs\PlantSelectionDTOs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="DTOs\PlantDtos\DeletePlantRequestcs" />
   </ItemGroup>
 
@@ -17,10 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\MeroBriksha.Core\MeroBriksha.Core.csproj" />
     <ProjectReference Include="..\MeroBriksha.Data\MeroBriksha.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DTOs\PlantSelectionDTOs\" />
   </ItemGroup>
 
 </Project>

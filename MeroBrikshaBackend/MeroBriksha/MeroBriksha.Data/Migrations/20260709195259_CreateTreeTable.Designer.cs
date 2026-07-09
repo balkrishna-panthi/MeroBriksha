@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeroBriksha.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260709131059_AddLocationsTable")]
-    partial class AddLocationsTable
+    [Migration("20260709195259_CreateTreeTable")]
+    partial class CreateTreeTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -153,42 +153,6 @@ namespace MeroBriksha.Data.Migrations
                     b.ToTable("Donors", (string)null);
                 });
 
-            modelBuilder.Entity("MeroBriksha.Core.Entities.Location", b =>
-                {
-                    b.Property<string>("ID")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("ID");
-
-                    b.Property<string>("ADDRESS")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("ADDRESS");
-
-                    b.Property<DateTime>("CREATEDDATE")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CREATEDDATE")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<decimal?>("LATITUDE")
-                        .HasColumnType("decimal(9,6)")
-                        .HasColumnName("LATITUDE");
-
-                    b.Property<string>("LOCATIONLINK")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)")
-                        .HasColumnName("LOCATIONLINK");
-
-                    b.Property<decimal?>("LONGITUDE")
-                        .HasColumnType("decimal(9,6)")
-                        .HasColumnName("LONGITUDE");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Locations", (string)null);
-                });
-
             modelBuilder.Entity("MeroBriksha.Core.Entities.Plant", b =>
                 {
                     b.Property<string>("ID")
@@ -218,6 +182,78 @@ namespace MeroBriksha.Data.Migrations
                     b.ToTable("Plants", (string)null);
                 });
 
+            modelBuilder.Entity("MeroBriksha.Core.Entities.Tree", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("ADDRESS")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("ADDRESS");
+
+                    b.Property<DateTime>("CREATEDDATE")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CREATEDDATE")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<decimal?>("LATITUDE")
+                        .HasPrecision(10, 7)
+                        .HasColumnType("decimal(10,7)")
+                        .HasColumnName("LATITUDE");
+
+                    b.Property<string>("LOCATIONLINK")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("LOCATIONLINK");
+
+                    b.Property<decimal?>("LONGITUDE")
+                        .HasPrecision(10, 7)
+                        .HasColumnType("decimal(10,7)")
+                        .HasColumnName("LONGITUDE");
+
+                    b.Property<DateTime>("PLANTEDDATE")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("PLANTEDDATE");
+
+                    b.Property<string>("PLANTID")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("PLANTID");
+
+                    b.Property<int>("STATUS")
+                        .HasColumnType("int")
+                        .HasColumnName("STATUS");
+
+                    b.Property<string>("TRACKINGCODE")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("TRACKINGCODE");
+
+                    b.Property<string>("TREEASSIGNMENTID")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("TREEASSIGNMENTID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("PLANTID");
+
+                    b.HasIndex("TRACKINGCODE")
+                        .IsUnique();
+
+                    b.HasIndex("TREEASSIGNMENTID")
+                        .IsUnique();
+
+                    b.ToTable("Trees", (string)null);
+                });
+
             modelBuilder.Entity("MeroBriksha.Core.Entities.TreeAssignment", b =>
                 {
                     b.Property<string>("ID")
@@ -237,12 +273,6 @@ namespace MeroBriksha.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("DONATIONID");
 
-                    b.Property<string>("PLANTID")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("PLANTID");
-
                     b.Property<string>("REMARKS")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)")
@@ -255,8 +285,6 @@ namespace MeroBriksha.Data.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("DONATIONID");
-
-                    b.HasIndex("PLANTID");
 
                     b.ToTable("TreeAssignments", (string)null);
                 });
@@ -280,6 +308,23 @@ namespace MeroBriksha.Data.Migrations
                     b.Navigation("Donor");
                 });
 
+            modelBuilder.Entity("MeroBriksha.Core.Entities.Tree", b =>
+                {
+                    b.HasOne("MeroBriksha.Core.Entities.Plant", null)
+                        .WithMany()
+                        .HasForeignKey("PLANTID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MeroBriksha.Core.Entities.TreeAssignment", "TreeAssignment")
+                        .WithOne()
+                        .HasForeignKey("MeroBriksha.Core.Entities.Tree", "TREEASSIGNMENTID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TreeAssignment");
+                });
+
             modelBuilder.Entity("MeroBriksha.Core.Entities.TreeAssignment", b =>
                 {
                     b.HasOne("MeroBriksha.Core.Entities.Donation", "Donation")
@@ -288,15 +333,7 @@ namespace MeroBriksha.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("MeroBriksha.Core.Entities.Plant", "Plant")
-                        .WithMany()
-                        .HasForeignKey("PLANTID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Donation");
-
-                    b.Navigation("Plant");
                 });
 #pragma warning restore 612, 618
         }
