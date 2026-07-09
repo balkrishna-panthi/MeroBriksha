@@ -50,6 +50,7 @@ namespace MeroBriksha.Services.Services
         {
             var plant = new Plant
             {
+                ID = Guid.NewGuid().ToString(),
                 NAME = request.Name,
                 SPECIES = request.Species,
                 SCIENTIFICNAME = request.ScientificName,

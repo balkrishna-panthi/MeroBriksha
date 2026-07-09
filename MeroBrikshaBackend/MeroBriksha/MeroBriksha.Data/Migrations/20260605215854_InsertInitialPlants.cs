@@ -15,31 +15,31 @@ namespace MeroBriksha.Data.Migrations
                 values: new object[,]
                 {
             {
-                "1",
+                Guid.NewGuid().ToString(),
                 "Peepal",
                 "Ficus religiosa",
                 "A sacred tree commonly found in Nepal and South Asia."
             },
             {
-                "2",
+                Guid.NewGuid().ToString(),
                 "Banyan",
                 "Ficus benghalensis",
                 "A large shade-giving tree known for its aerial roots."
             },
             {
-                "3",
+                Guid.NewGuid().ToString(),
                 "Neem",
                 "Azadirachta indica",
                 "A medicinal tree known for its antibacterial properties."
             },
             {
-                "4",
+                Guid.NewGuid().ToString(),
                 "Rhododendron",
                 "Rhododendron arboreum",
                 "The national flower of Nepal, commonly found in hilly regions."
             },
             {
-                "5",
+                Guid.NewGuid().ToString(),
                 "Mango",
                 "Mangifera indica",
                 "A fruit-bearing tree suitable for warmer regions."
@@ -49,13 +49,7 @@ namespace MeroBriksha.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Plants",
-                keyColumn: "ID",
-                keyValues: new object[]
-                {
-            "1", "2", "3", "4", "5"
-                });
+            migrationBuilder.Sql("TRUNCATE TABLE Plants");
         }
     }
 }

@@ -19,4 +19,8 @@
     <ProjectReference Include="..\MeroBriksha.Data\MeroBriksha.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\PlantSelectionDTOs\" />
+  </ItemGroup>
+
 </Project>

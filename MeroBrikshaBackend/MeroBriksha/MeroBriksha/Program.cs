@@ -50,8 +50,8 @@ namespace MeroBriksha
             builder.Services.AddScoped<IMeroBrikshaTestService, MeroBrikshaTestService>();
             builder.Services.AddScoped<IMeroBrikshaTestRepository, MeroBrikshaTestRepository>();
 
-            builder.Services.AddScoped<ISelectPlantService, SelectPlantService>();
-            builder.Services.AddScoped<ISelectPlantRepository, SelectPlantRepository>();
+            builder.Services.AddScoped<IPlantSelectionService, PlantSelectionService>();
+            builder.Services.AddScoped<IPlantSelectionRepository, PlantSelectionRepository>();
             #endregion
 
             var app = builder.Build();
