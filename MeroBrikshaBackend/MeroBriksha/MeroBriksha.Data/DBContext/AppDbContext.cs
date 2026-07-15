@@ -21,6 +21,7 @@ namespace MeroBriksha.Data.DBContext
         public DbSet<Core.Entities.Campaign> Campaigns { get; set; }
         public DbSet<Donation> Donations { get; set; }
         public DbSet<TreeAssignment> TreeAssignments { get; set; }
+        public DbSet<Tree> Trees { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
