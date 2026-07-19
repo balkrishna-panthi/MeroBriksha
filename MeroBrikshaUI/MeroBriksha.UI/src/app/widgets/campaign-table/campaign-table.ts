@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { TableWidget } from '../table-widget/table-widget'; 
-import { TableColumn } from '../table-widget/models/table-column.model';
+import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
 
 export interface PeriodicElement {
   name: string;
@@ -28,31 +28,58 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: './campaign-table.css',
 })
 export class CampaignTable {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+
+  
   columns: TableColumn[] = [
     {
       key: 'campaignId',
-      label: 'Campaign ID'
-    },
-    {
-      key: 'name',
-      label: 'Campaign Name'
+      label: 'Campaign ID',
+      type: ColumnType.text
     },
     {
       key: 'description',
-      label: 'Description'
+      label: 'Description',
+      type: ColumnType.text
     },
     {
       key: 'organizationName',
-      label: 'Organization Name'
+      label: 'Organization Name',
+      type: ColumnType.text   
     },
     {
       key: 'startDate',
-      label: 'Start Date'
+      label: 'Start Date',
+      type: ColumnType.text
     },
     {
       key: 'endDate',
-      label: 'End Date'
+      label: 'End Date',
+      type: ColumnType.text
+    },
+    {
+      key: 'actions',
+      label: 'Actions',
+      type: ColumnType.actions,
+      config: {
+        actions: [
+          {
+            label: 'View',
+            type: ActionType.link,
+            routerLink: row => ['/campaigns', row.id]
+          },
+          {
+            label: 'Edit',
+            type: ActionType.link,
+            routerLink: row => ['/campaigns', row.id, 'edit']
+          },
+          {
+            label: 'Delete',
+            type: ActionType.button,
+            onClick: row => this.deleteCampaign(row.campaignId)
+          }
+        ]
+      }
     }
   ];
   dataSource = ELEMENT_DATA;
@@ -98,4 +125,9 @@ export class CampaignTable {
       endDate: '2026-11-30'
     }
   ];
+
+  deleteCampaign(campaignId: string): void
+  {
+    console.log(`Delete campaign with ID: ${campaignId}`);
+  }
 }
