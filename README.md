@@ -1068,3 +1068,32 @@ This makes MeroBriksha more than a CRUD application.
 
 It becomes a donation-to-tree accountability platform suitable for future municipality or youth club handover.
 
+src/
+└── app/
+    ├── core/
+    │   ├── guards/
+    │   ├── interceptors/
+    │   ├── services/
+    │   └── models/
+    │
+    ├── shared/
+    │   ├── components/
+    │   ├── directives/
+    │   ├── pipes/
+    │   └── enums/
+    │
+    ├── features/
+    │   ├── dashboard/
+    │   ├── campaigns/
+    │   ├── donors/
+    │   ├── donations/
+    │   ├── tree-assignments/
+    │   ├── trees/
+    │   └── authentication/
+    │
+    ├── layouts/
+    │   ├── admin-layout/
+    │   └── auth-layout/
+    │
+    ├── app.component.*
+    └── app.routes.ts

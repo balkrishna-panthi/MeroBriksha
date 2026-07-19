@@ -1,0 +1,101 @@
+import { Component } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
+import { TableWidget } from '../table-widget/table-widget'; 
+import { TableColumn } from '../table-widget/models/table-column.model';
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+const ELEMENT_DATA: PeriodicElement[] = [
+  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
+  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
+  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
+  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+];
+@Component({
+  selector: 'app-campaign-table',
+  imports: [MatTableModule, TableWidget],
+  templateUrl: './campaign-table.html',
+  styleUrl: './campaign-table.css',
+})
+export class CampaignTable {
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  columns: TableColumn[] = [
+    {
+      key: 'campaignId',
+      label: 'Campaign ID'
+    },
+    {
+      key: 'name',
+      label: 'Campaign Name'
+    },
+    {
+      key: 'description',
+      label: 'Description'
+    },
+    {
+      key: 'organizationName',
+      label: 'Organization Name'
+    },
+    {
+      key: 'startDate',
+      label: 'Start Date'
+    },
+    {
+      key: 'endDate',
+      label: 'End Date'
+    }
+  ];
+  dataSource = ELEMENT_DATA;
+  dummyData  = [
+    {
+      campaignId: 'CMP-2026-001',
+      name: 'Tamghas Green Hills 2026',
+      description: 'A community-driven tree plantation campaign to restore degraded hillside areas around Tamghas.',
+      organizationName: 'Tamghas Youth Club',
+      startDate: '2026-06-01',
+      endDate: '2026-08-31'
+    },
+    {
+      campaignId: 'CMP-2026-002',
+      name: 'Gulmi Community Forest Initiative',
+      description: 'A campaign focused on increasing tree coverage through community participation and local donations.',
+      organizationName: 'Gulmi Community Forest Group',
+      startDate: '2026-05-15',
+      endDate: '2026-10-15'
+    },
+    {
+      campaignId: 'CMP-2026-003',
+      name: 'One Donor One Tree',
+      description: 'An initiative connecting individual donors with tree plantation activities across selected locations.',
+      organizationName: 'MeroBriksha Foundation',
+      startDate: '2026-07-01',
+      endDate: '2026-12-31'
+    },
+    {
+      campaignId: 'CMP-2026-004',
+      name: 'School Green Nepal',
+      description: 'A tree plantation campaign involving schools, students, teachers, and local volunteers.',
+      organizationName: 'Nepal Youth Environmental Network',
+      startDate: '2026-07-15',
+      endDate: '2026-09-30'
+    },
+    {
+      campaignId: 'CMP-2026-005',
+      name: 'Community Forest Restoration',
+      description: 'A long-term plantation campaign focused on restoring local forest areas and improving biodiversity.',
+      organizationName: 'Green Nepal Initiative',
+      startDate: '2026-04-01',
+      endDate: '2026-11-30'
+    }
+  ];
+}

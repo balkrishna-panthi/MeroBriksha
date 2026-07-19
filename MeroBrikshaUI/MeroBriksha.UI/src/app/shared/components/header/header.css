@@ -1,0 +1,16 @@
+
+.header {
+  background-color: #FFFFFF;
+  overflow: hidden;
+  border: 2px solid #E0E0E0;
+}
+
+.header-logo {
+  float: left;
+}
+.header-menu {
+  float: right;  
+}
+.header-menu-item {
+  margin: 10px;  
+}
