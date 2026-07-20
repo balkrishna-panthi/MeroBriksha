@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import { TableWidget } from '../table-widget/table-widget'; 
 import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
-
+import { CampaignService } from '../../core/services/campaign-service';
+import { Campaign } from '../../core/models/campaign';
+import { AsyncPipe, CommonModule } from '@angular/common';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -23,17 +26,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 @Component({
   selector: 'app-campaign-table',
-  imports: [MatTableModule, TableWidget],
+  imports: [MatTableModule, TableWidget, AsyncPipe, CommonModule],
   templateUrl: './campaign-table.html',
   styleUrl: './campaign-table.css',
 })
 export class CampaignTable {
   //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  
 
   
   columns: TableColumn[] = [
     {
-      key: 'campaignId',
+      key: 'id',
       label: 'Campaign ID',
       type: ColumnType.text
     },
@@ -43,17 +47,17 @@ export class CampaignTable {
       type: ColumnType.text
     },
     {
-      key: 'organizationName',
-      label: 'Organization Name',
+      key: 'organizerName',
+      label: 'Organizer Name',
       type: ColumnType.text   
     },
     {
-      key: 'startDate',
+      key: 'startDateUtc',
       label: 'Start Date',
       type: ColumnType.text
     },
     {
-      key: 'endDate',
+      key: 'endDateUtc',
       label: 'End Date',
       type: ColumnType.text
     },
@@ -82,6 +86,19 @@ export class CampaignTable {
       }
     }
   ];
+
+  campaigns$?: Observable<Campaign[]>;
+
+  constructor(
+    private campaignService: CampaignService
+  ) { }
+
+  ngOnInit(): void {
+    // Expose the campaigns Observable and use the async pipe in the template.
+    // This is the idiomatic Angular approach and avoids ExpressionChangedAfterItHasBeenCheckedError.
+    this.campaigns$ = this.campaignService.getCampaigns();
+  }
+  
   dataSource = ELEMENT_DATA;
   dummyData  = [
     {

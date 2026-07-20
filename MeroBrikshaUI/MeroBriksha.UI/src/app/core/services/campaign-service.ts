@@ -1,0 +1,18 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Campaign } from '../models/campaign';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CampaignService {
+
+  private readonly apiUrl = 'https://localhost:7067/api/campaign/all';
+
+  constructor(private http: HttpClient) { }
+
+  getCampaigns(): Observable<Campaign[]> {
+    return this.http.get<Campaign[]>(this.apiUrl);
+  }
+}

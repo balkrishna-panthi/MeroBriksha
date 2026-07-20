@@ -2,7 +2,7 @@ export interface Campaign {
   campaignId: string;
   name: string;
   description: string;
-  organizationName: string;
-  startDate: string;
-  endDate: string;
+  organizerName: string;
+  startDateUtc: string;
+  endDateUtc: string;
 }
