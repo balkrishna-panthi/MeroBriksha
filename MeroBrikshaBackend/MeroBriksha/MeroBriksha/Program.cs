@@ -51,6 +51,18 @@ namespace MeroBriksha
             builder.Services.AddScoped<IMeroBrikshaTestRepository, MeroBrikshaTestRepository>();
             #endregion
 
+
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyAllowSpecificOrigins",
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://localhost:4200/",
+                                                          "https://localhost:4200/").AllowAnyOrigin();
+                                  });
+            });
+
             var app = builder.Build();
             try
             {
@@ -63,7 +75,7 @@ namespace MeroBriksha
                 }
 
                 app.UseHttpsRedirection();
-
+                app.UseCors("MyAllowSpecificOrigins");
                 app.UseAuthorization();               
 
                 app.MapControllers();
