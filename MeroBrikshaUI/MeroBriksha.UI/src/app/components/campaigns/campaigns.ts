@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-campaigns',
-  imports: [CampaignTable, MatIconModule, MatButtonModule, Dialog, MatFormFieldModule, FormsModule],
+  imports: [CampaignTable, MatIconModule, MatButtonModule],
   templateUrl: './campaigns.html',
   styleUrl: './campaigns.css',
 })
