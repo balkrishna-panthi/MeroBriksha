@@ -59,7 +59,7 @@ namespace MeroBriksha
                                   policy =>
                                   {
                                       policy.WithOrigins("http://localhost:4200/",
-                                                          "https://localhost:4200/").AllowAnyOrigin();
+                                                          "https://localhost:4200/").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                                   });
             });
 
