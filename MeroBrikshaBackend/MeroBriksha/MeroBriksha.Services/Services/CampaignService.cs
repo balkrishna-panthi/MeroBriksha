@@ -52,6 +52,7 @@ namespace MeroBriksha.Services.Services
             {
                 ID = Guid.NewGuid().ToString(),
                 NAME = request.Name,
+                ORGANIZERNAME = request.OrganizerName,
                 DESCRIPTION = request.Description,
                 STARTDATEUTC = request.StartDateUtc,
                 ENDDATEUTC = request.EndDateUtc
