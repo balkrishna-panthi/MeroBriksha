@@ -14,6 +14,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DialogOverviewExample } from '../../shared/components/dialog/dialog';
+import { CampaignService } from '../../core/services/campaign-service';
 
 @Component({
   selector: 'app-campaigns',
@@ -22,12 +23,30 @@ import { DialogOverviewExample } from '../../shared/components/dialog/dialog';
   styleUrl: './campaigns.css',
 })
 export class Campaigns {
+
+  constructor(private campaignService: CampaignService) {
+  }
   onNewCampaignClick() {
     this.openDialog();
+    this.newCampaign();
   }
 
   newCampaign() {
     console.log('New Campaign button clicked');
+    this.campaignService.postCampaign({
+      name: 'Summer Donation Drive',
+      description: 'A campaign to raise funds for underprivileged children.',
+      organizerName: 'Everest Foundation',
+      startDateUtc: '2026-08-01T00:00:00Z',
+      endDateUtc: '2026-08-31T23:59:59Z'
+    }).subscribe({
+      next: (response) => {
+        console.log('Campaign created', response);
+      },
+      error: (err) => {
+        console.error('Error creating campaign', err);
+      }
+    });
   }
 
   readonly animal = signal('');
