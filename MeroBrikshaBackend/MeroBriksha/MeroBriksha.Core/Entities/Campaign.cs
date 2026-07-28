@@ -21,5 +21,7 @@ namespace MeroBriksha.Core.Entities
         public int? TARGETTREECOUNT { get; set; }
 
         public DateTime CREATEDDATE { get; set; }
+
+        public bool ISDELETED { get; set; } = false;
     }
 }

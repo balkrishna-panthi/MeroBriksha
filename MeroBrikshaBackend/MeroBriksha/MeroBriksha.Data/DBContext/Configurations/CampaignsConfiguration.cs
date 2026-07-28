@@ -40,6 +40,10 @@ namespace MeroBriksha.Data.DBContext.Configurations
             builder.Property(x => x.CREATEDDATE)
                .IsRequired()
                .HasDefaultValueSql("GETUTCDATE()");
+
+            builder.Property(x => x.ISDELETED)
+                .IsRequired()
+                .HasDefaultValue(false);
         }
     }
 }
