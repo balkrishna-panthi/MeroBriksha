@@ -36,21 +36,9 @@ export class Campaigns {
 
 
   onNewCampaignClick() {
-    this.openDialog();
-    // this.newCampaign();
+    this.openDialog();    
   }
-
-  // getCampaigns(){
-  //   this.campaignService.getCampaigns().subscribe({
-  //     next : (result) =>{
-  //       this.campaignsList = result;
-  //       console.log(this.campaignsList);
-  //     },
-  //     error : (err) =>{
-  //       console.log("error fetching campaigns");
-  //     }
-  //   })
-  // }
+  
 
   getCampaigns() {
     this.campaignsList$ = this.campaignService.getCampaigns();

@@ -27,7 +27,7 @@ export class TableWidget {
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
 
-  pageSizeOptions: number[] = [1, 5, 10, 20];
+  pageSizeOptions: number[] = [10, 20, 30, 40, 50];
   @ViewChild(MatPaginator) paginator!: MatPaginator; //Means : Find the MatPaginator component inside this component's template and give me a reference to it.
 
   ngAfterViewInit() {
