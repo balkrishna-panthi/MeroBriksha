@@ -96,5 +96,15 @@ namespace MeroBriksha.Services.Services
                 
             };
         }
+
+        public async Task<bool> DeleteCampaignAsync(string id)
+        {
+            var campaign = await _campaignRepository.GetCampaignByIdAsync(id);
+            if (campaign == null)
+            {
+                throw new NotFoundException(ErrorMessages.CampaignNotFoundById(id));
+            }
+            return await _campaignRepository.DeleteCampaignAsync(id);
+        }
     }
 }

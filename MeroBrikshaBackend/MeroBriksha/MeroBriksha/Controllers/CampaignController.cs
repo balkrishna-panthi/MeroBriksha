@@ -39,5 +39,16 @@ namespace MeroBriksha.Controllers
             var campaign = await _campaignServices.UpdateCampaignAsync(campaignRequest);
             return Ok(campaign);
         }
+
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> DeleteCampaign(string id)
+        {
+            var result = await _campaignServices.DeleteCampaignAsync(id);
+            if (!result)
+            {
+                return NotFound(result);
+            }
+            return Ok(result);
+        }
     }
 }

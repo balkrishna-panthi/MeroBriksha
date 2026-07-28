@@ -18,11 +18,11 @@ namespace MeroBriksha.Data.Repositories
         }
         public async Task<List<Campaign>> GetAllCampaignsAsync()
         {
-            return await _context.Campaigns.AsNoTracking().ToListAsync();
+            return await _context.Campaigns.Where(c => !c.ISDELETED).AsNoTracking().ToListAsync();
         }
         public async Task<Campaign> GetCampaignByIdAsync(string id)
         {
-            var campaign = await _context.Campaigns.AsNoTracking().FirstOrDefaultAsync(x => x.ID == id);
+            var campaign = await _context.Campaigns.Where(c => !c.ISDELETED).AsNoTracking().FirstOrDefaultAsync(x => x.ID == id);
             return campaign;
         }
         public async Task<Campaign> CreateCampaignAsync(Campaign campaign)
@@ -48,6 +48,18 @@ namespace MeroBriksha.Data.Repositories
             await _context.SaveChangesAsync();
 
             return existingCampaign;
+        }
+
+        public async Task<bool> DeleteCampaignAsync(string id)
+        {
+            var campaign = await _context.Campaigns.FirstOrDefaultAsync(x => x.ID == id);
+            if (campaign == null)
+            {
+                return false;
+            }
+            campaign.ISDELETED = true;
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

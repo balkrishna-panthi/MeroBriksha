@@ -11,5 +11,6 @@ namespace MeroBriksha.Data.Interfaces
         Task<Campaign> GetCampaignByIdAsync(string id);
         Task<Campaign> CreateCampaignAsync(Campaign campaign);
         Task<Campaign> UpdateCampaignAsync(Campaign campaign);
+        Task<bool> DeleteCampaignAsync(string id);
     }
 }
