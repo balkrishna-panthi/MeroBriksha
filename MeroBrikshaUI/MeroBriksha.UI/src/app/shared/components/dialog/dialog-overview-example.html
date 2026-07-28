@@ -1,12 +1,27 @@
-<h2 mat-dialog-title>Hi {{data.name}}</h2>
-<mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="animal" />
+<h2 mat-dialog-title>Create Campaign</h2>
+<mat-dialog-content> 
+  <mat-form-field style="width: 100%;">
+    <mat-label>Campaign Name</mat-label>
+    <input matInput [(ngModel)]="campaignName" />
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Campaign Description</mat-label>
+    <input matInput [(ngModel)]="campaignDescription" />
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Organizer Name</mat-label>
+    <input matInput [(ngModel)]="organizerName" />
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Start Date</mat-label>
+    <input type="date" matInput [(ngModel)]="startDate" />
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <mat-label>End Date</mat-label>
+    <input type="date" matInput [(ngModel)]="endDate" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton (click)="onNoClick()">No Thanks</button>
-  <button matButton [mat-dialog-close]="animal()" cdkFocusInitial>Ok</button>
+  <button matButton  (click)="submit()" cdkFocusInitial>Create</button>
 </mat-dialog-actions>

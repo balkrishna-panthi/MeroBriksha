@@ -28,7 +28,7 @@ export class Campaigns {
   }
   onNewCampaignClick() {
     this.openDialog();
-    this.newCampaign();
+   // this.newCampaign();
   }
 
   newCampaign() {
@@ -64,6 +64,15 @@ export class Campaigns {
       if (result !== undefined) {
         this.animal.set(result);
       }
+
+      this.campaignService.postCampaign(result).subscribe({
+        next: response => {
+          console.log('Campaign created', response);
+        },
+        error: err => {
+          console.error(err);
+        }
+      });
     });
   }
 }

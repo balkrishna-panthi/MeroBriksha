@@ -12,10 +12,16 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CampaignService } from '../../../core/services/campaign-service';
 
 export interface DialogData {
   animal: string;
   name: string;
+  campaignName: string;
+  campaignDescription: string;
+  organizerName: string;
+  startDate: string;
+  endDate: string;
 }
 
 /**
@@ -60,14 +66,32 @@ export class Dialog {
   ],
 })
 export class DialogOverviewExample {
+
+  constructor(private campaignService : CampaignService) {
+  }
   readonly dialogRef = inject(MatDialogRef<DialogOverviewExample>);
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
   readonly animal = model(this.data.animal);
-  
+  readonly campaignName = model(this.data.campaignName);
+  readonly campaignDescription = model(this.data.campaignDescription);
+  readonly organizerName = model(this.data.organizerName);
+  readonly startDate = model(this.data.startDate);
+  readonly endDate = model(this.data.endDate);
+
+  submit(): void {
+
+    this.dialogRef.close({
+      name: this.campaignName(),
+      description: this.campaignDescription(),
+      organizerName: this.organizerName(),
+      startDateUtc: new Date(this.startDate()).toISOString(),
+      endDateUtc: new Date(this.endDate()).toISOString()
+    });   
+  }
   onNoClick(): void {
     this.dialogRef.close();
-    this.dialogRef.afterClosed().subscribe(() => {
-      console.log('Dialog closed with animal:', this.animal());
-    });
+    // this.dialogRef.afterClosed().subscribe(() => {
+    //   console.log('Dialog closed with animal:', this.animal());
+    // });
   }
 }
