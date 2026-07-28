@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
-import { TableWidget } from '../table-widget/table-widget'; 
+import { TableWidget } from '../table-widget/table-widget';
 import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
 import { CampaignService } from '../../core/services/campaign-service';
 import { Campaign } from '../../core/models/campaign';
@@ -31,11 +31,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: './campaign-table.css',
 })
 export class CampaignTable {
+  @Input() campaigns$?: Observable<Campaign[]>;
   @Output() delete = new EventEmitter<string>();
   //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  
 
-  
+
+
   columns: TableColumn[] = [
     {
       key: 'id',
@@ -50,7 +51,7 @@ export class CampaignTable {
     {
       key: 'organizerName',
       label: 'Organizer Name',
-      type: ColumnType.text   
+      type: ColumnType.text
     },
     {
       key: 'startDateUtc',
@@ -81,14 +82,14 @@ export class CampaignTable {
           {
             label: 'Delete',
             type: ActionType.button,
-            onClick: row => this.deleteCampaign(row.campaignId)
+            onClick: row => this.deleteCampaign(row.id)
           }
         ]
       }
     }
   ];
 
-  campaigns$?: Observable<Campaign[]>;
+  //campaigns$?: Observable<Campaign[]>;
 
   constructor(
     private campaignService: CampaignService
@@ -97,11 +98,11 @@ export class CampaignTable {
   ngOnInit(): void {
     // Expose the campaigns Observable and use the async pipe in the template.
     // This is the idiomatic Angular approach and avoids ExpressionChangedAfterItHasBeenCheckedError.
-    this.campaigns$ = this.campaignService.getCampaigns();
+    //this.campaigns$ = this.campaignService.getCampaigns();
   }
-  
+
   dataSource = ELEMENT_DATA;
-  dummyData  = [
+  dummyData = [
     {
       campaignId: 'CMP-2026-001',
       name: 'Tamghas Green Hills 2026',
@@ -144,8 +145,7 @@ export class CampaignTable {
     }
   ];
 
-  deleteCampaign(campaignId: string): void
-  {
-    console.log(`Delete campaign with ID: ${campaignId}`);
+  deleteCampaign(campaignId: string): void {
+    this.delete.emit(campaignId);
   }
 }

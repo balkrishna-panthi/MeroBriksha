@@ -30,7 +30,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>-->
 
-<ng-container *ngIf="campaigns$ | async as campaigns">
-  <app-table-widget [columns]="columns" [source]="campaigns"></app-table-widget>
-</ng-container>
+
+  <app-table-widget [columns]="columns" [source]="(campaigns$ | async) ?? []"></app-table-widget>
+
 
