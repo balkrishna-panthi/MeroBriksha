@@ -4,4 +4,4 @@
     New Campaign
   </button>
 </div>
-<app-campaign-table></app-campaign-table>
+<app-campaign-table [campaigns$]="campaignsList$" (delete)="deleteCampaign($event)"></app-campaign-table>

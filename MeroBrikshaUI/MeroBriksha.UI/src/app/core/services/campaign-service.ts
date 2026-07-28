@@ -20,4 +20,8 @@ export class CampaignService {
   postCampaign(campaign: CampaignRequest): Observable<Campaign> {
     return this.http.post<Campaign>('https://localhost:7067/api/campaign/create', campaign);
   }
+
+  deleteCampaign(id : string) : Observable<boolean>{
+    return this.http.delete<boolean>('https://localhost:7067/api/Campaign/Delete/'+id);
+  }
 }

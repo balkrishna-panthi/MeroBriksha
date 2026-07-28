@@ -31,6 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: './campaign-table.css',
 })
 export class CampaignTable {
+  @Output() delete = new EventEmitter<string>();
   //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   
 
