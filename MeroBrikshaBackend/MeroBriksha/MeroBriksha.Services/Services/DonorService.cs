@@ -1,5 +1,7 @@
 ﻿using MeroBriksha.Core.Entities;
 using MeroBriksha.Data.Interfaces;
+using MeroBriksha.Data.Repositories;
+using MeroBriksha.Services.Services.Exceptions;
 using MeroBriksha.Services.DTOs.DonorDtos;
 using MeroBriksha.Services.DTOs.Donors;
 using MeroBriksha.Services.Interfaces;
@@ -69,8 +71,38 @@ namespace MeroBriksha.Services.Services
                 Address = createdDonor.ADDRESS,
                 CreatedDate = createdDonor.CREATEDDATE
             };
+
+
         }
 
-        
+        public async Task<DonorResponse> UpdateDonorAsync(UpdateDonorRequest request)
+        {
+
+            var donor = await _donorRepository.GetDonorByIdAsync(request.Id);
+
+            if (donor == null)
+            {
+                throw new ValidationException($"Donor with ID {request.Id} not found.");
+            }
+
+            donor.FULLNAME = request.Fullname;
+            donor.EMAIL = request.Email;
+            donor.PHONENUMBER = request.PhoneNumber;
+            donor.ADDRESS = request.Address;
+
+            var updatedDonor = await _donorRepository.UpdateDonorAsync(donor);
+
+            return new DonorResponse
+            {
+              
+                Fullname = updatedDonor.FULLNAME,
+                Email = updatedDonor.EMAIL,
+                PhoneNumber = updatedDonor.PHONENUMBER,
+                Address = updatedDonor.ADDRESS
+                
+            };
+        }
+
+
     }
 }
