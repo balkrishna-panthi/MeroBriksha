@@ -1,12 +1,15 @@
+using Authentication;
 using MeroBriksha.Data.DBContext;
 using MeroBriksha.Data.Interfaces;
 using MeroBriksha.Data.Repositories;
 using MeroBriksha.Middleware;
 using MeroBriksha.Services.Interfaces;
 using MeroBriksha.Services.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using System.Reflection;
+using System.Transactions;
 
 namespace MeroBriksha
 {
@@ -25,11 +28,27 @@ namespace MeroBriksha
                     Version = "v1",
                     Title = "MeroBriksha API",
                     Description = "API for MeroBriksha"
+
+                });
+
+                options.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic"
+                });
+
+                options.AddSecurityRequirement(document =>
+                new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecuritySchemeReference("basic", document),
+                        new List<string>()
+                    }
                 });
             });
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-           
+
             #region Dependency Injection
 
             builder.Services.AddTransient<ICampaignServices, CampaignService>();
@@ -62,7 +81,20 @@ namespace MeroBriksha
                                                           "https://localhost:4200/").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                                   });
             });
+            builder.Services.AddAuthentication((options) =>
+            {
+                options.AddScheme("Basic", options =>
+                {
+                    options.HandlerType = typeof(BasicAuthenticationHandler);
+                });
 
+            });
+            //builder.Services
+            //    .AddAuthentication("Basic")
+            //    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>(
+            //        "Basic",
+            //        null);
+            builder.Services.AddAuthorization();
             var app = builder.Build();
             try
             {
@@ -76,7 +108,8 @@ namespace MeroBriksha
 
                 app.UseHttpsRedirection();
                 app.UseCors("MyAllowSpecificOrigins");
-                app.UseAuthorization();               
+                app.UseAuthentication();
+                app.UseAuthorization();
 
                 app.MapControllers();
             }
