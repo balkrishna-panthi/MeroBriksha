@@ -1,5 +1,6 @@
 ﻿using MeroBriksha.Services.DTOs.CampaignDTOs;
 using MeroBriksha.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace MeroBriksha.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CampaignController : ControllerBase
     {
         ICampaignServices _campaignServices;
