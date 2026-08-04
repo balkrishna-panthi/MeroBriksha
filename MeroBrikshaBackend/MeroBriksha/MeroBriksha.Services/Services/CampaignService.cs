@@ -26,7 +26,8 @@ namespace MeroBriksha.Services.Services
                 Name = x.NAME,
                 Description = x.DESCRIPTION,
                 OrganizerName = x.ORGANIZERNAME,
-                StartDateUtc = x.STARTDATEUTC
+                StartDateUtc = x.STARTDATEUTC,
+                EndDateUtc = x.ENDDATEUTC
             }).ToList();
         }
         public async Task<CampaignResponse> GetCampaignByIdAsync(string id)
