@@ -2,11 +2,13 @@ import { Routes } from '@angular/router';
 import { App } from './app';
 import { Campaigns } from './components/campaigns/campaigns';
 import { Dialog } from './shared/components/dialog/dialog';
+import { Donors } from './components/donors/donors';
 
 export const routes: Routes = [{
   path: '',
   component: Campaigns
 },
   { path: 'campaigns', component: Campaigns },
-  { path: 'dialog', component: Dialog } 
+  { path: 'dialog', component: Dialog } ,
+  {path: 'donors', component: Donors}
 ];

@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import { TableWidget } from '../table-widget/table-widget';
 import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
-import { CampaignService } from '../../core/services/campaign-service';
-import { Campaign } from '../../core/models/campaign';
+import { CampaignService } from '../../core/services/campaignServices/campaign-service';
+import { Campaign } from '../../core/models/campaigns/campaign';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
