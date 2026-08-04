@@ -24,6 +24,11 @@ export class CampaignTable {
       type: ColumnType.text
     },
     {
+      key: 'name',
+      label: 'Name',
+      type: ColumnType.text
+    },
+    {
       key: 'description',
       label: 'Description',
       type: ColumnType.text
