@@ -1,12 +1,14 @@
 ﻿using MeroBriksha.Services.DTOs.DonorDtos;
 using MeroBriksha.Services.DTOs.Donors;
 using MeroBriksha.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeroBriksha.Controllers
 {
     [Route("api/public/[controller]")]
     [ApiController]
+    [Authorize]
     public class DonorsController : ControllerBase
     {
         private readonly IDonorService _donorService;
