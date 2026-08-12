@@ -74,9 +74,7 @@ export class CampaignTable {
     }
   ];
   
-  constructor(
-    private campaignService: CampaignService
-  ) { }  
+  constructor() { }  
 
   deleteCampaign(campaignId: string): void {
     this.delete.emit(campaignId);

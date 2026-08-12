@@ -3,6 +3,7 @@ import { App } from './app';
 import { Campaigns } from './components/campaigns/campaigns';
 import { Dialog } from './shared/components/dialog/dialog';
 import { Donors } from './components/donors/donors';
+import { Donations } from './components/donations/donations';
 
 export const routes: Routes = [{
   path: '',
@@ -10,5 +11,6 @@ export const routes: Routes = [{
 },
   { path: 'campaigns', component: Campaigns },
   { path: 'dialog', component: Dialog } ,
-  {path: 'donors', component: Donors}
+  {path: 'donors', component: Donors},
+  {path : 'donations', component: Donations}
 ];
