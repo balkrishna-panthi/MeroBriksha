@@ -68,6 +68,9 @@ namespace MeroBriksha
 
             builder.Services.AddScoped<IMeroBrikshaTestService, MeroBrikshaTestService>();
             builder.Services.AddScoped<IMeroBrikshaTestRepository, MeroBrikshaTestRepository>();
+
+            builder.Services.AddScoped<ITreeService, TreeService>();
+            builder.Services.AddScoped<ITreeRepository, TreeRepository>();
             #endregion
 
 

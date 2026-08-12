@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
 import { TableWidget } from "../table-widget/table-widget";
 import { Donor } from '../../core/models/donors/donor';
@@ -13,6 +13,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class DonorsTable {
    @Input() donors$?: Observable<Donor[]>;
+   @Output() delete = new EventEmitter<string>();
 
   columns: TableColumn[] = [
     {
@@ -67,6 +68,6 @@ export class DonorsTable {
   ];
 
   deleteDonors(id: string) {
-    console.log('delete donors clicked: ' + id);
+    this.delete.emit(id);
   }
 }

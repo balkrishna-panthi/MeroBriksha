@@ -23,4 +23,7 @@ ngOnInit(){
 getDonors(){
   this.donorsList$ = this.donorService.getDonors();
 }
+deleteDonor(id : string){
+  console.log('delete donors clicked: ' + id);
+}
 }

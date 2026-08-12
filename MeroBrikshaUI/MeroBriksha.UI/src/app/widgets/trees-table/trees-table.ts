@@ -1,46 +1,48 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Donation } from '../../core/models/donations/donation';
+import { Tree } from '../../core/models/trees/tree';
 import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
-
 import { TableWidget } from '../table-widget/table-widget';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-donations-table',
+  selector: 'app-trees-table',
   imports: [TableWidget, AsyncPipe],
-  templateUrl: './donations-table.html',
-  styleUrl: './donations-table.css',
+  templateUrl: './trees-table.html',
+  styleUrl: './trees-table.css',
 })
-export class DonationsTable {
-  @Input() donations$?: Observable<Donation[]>;
-  @Output() delete = new EventEmitter<string>();
-
-
-  columns: TableColumn[] = [
+export class TreesTable {
+@Input() trees$? : Observable<Tree[]>;
+ @Output() delete = new EventEmitter<string>();
+columns: TableColumn[] = [
     {
       key: 'id',
-      label: 'Donation ID',
+      label: 'ID',
       type: ColumnType.text
     },
     {
-      key: 'campaignName',
-      label: 'Campaign Name',
+      key: 'treeAssignmentId',
+      label: 'Tree Assignment Id',
+      type: ColumnType.text
+    },
+    {
+      key: 'name',
+      label: 'Name',
+      type: ColumnType.text
+    },
+    {
+      key: 'description',
+      label: 'Description',
+      type: ColumnType.text
+    },
+    {
+      key: 'species',
+      label: 'Species',
       type: ColumnType.text
     },
     {
       key: 'donorName',
       label: 'Donor Name',
-      type: ColumnType.text
-    },
-    {
-      key: 'status',
-      label: 'Status',
-      type: ColumnType.text
-    },
-    {
-      key: 'verifiedDate',
-      label: 'VerifiedDate',
       type: ColumnType.text
     },
     {
@@ -52,26 +54,24 @@ export class DonationsTable {
           {
             label: 'View',
             type: ActionType.link,
-            routerLink: row => ['/donations', row.id]
+            routerLink: row => ['/donors', row.id]
           },
           {
             label: 'Edit',
             type: ActionType.link,
-            routerLink: row => ['/donations', row.id, 'edit']
+            routerLink: row => ['/donors', row.id, 'edit']
           },
           {
             label: 'Delete',
             type: ActionType.button,
-            onClick: row => this.deleteDonation(row.id)
+            onClick: row => this.deleteTree(row.id)
           }
         ]
       }
     }
   ];
-  
-  deleteDonation(id: string) {
-    this.delete.emit(id);
+
+  deleteTree(id : string){
+      this.delete.emit(id);
   }
-
-
 }
