@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import { TableWidget } from '../table-widget/table-widget';
 import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
-import { CampaignService } from '../../core/services/campaign-service';
-import { Campaign } from '../../core/models/campaign';
+import { CampaignService } from '../../core/services/campaignServices/campaign-service';
+import { Campaign } from '../../core/models/campaigns/campaign';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
@@ -21,6 +21,11 @@ export class CampaignTable {
     {
       key: 'id',
       label: 'Campaign ID',
+      type: ColumnType.text
+    },
+    {
+      key: 'name',
+      label: 'Name',
       type: ColumnType.text
     },
     {
@@ -69,9 +74,7 @@ export class CampaignTable {
     }
   ];
   
-  constructor(
-    private campaignService: CampaignService
-  ) { }  
+  constructor() { }  
 
   deleteCampaign(campaignId: string): void {
     this.delete.emit(campaignId);

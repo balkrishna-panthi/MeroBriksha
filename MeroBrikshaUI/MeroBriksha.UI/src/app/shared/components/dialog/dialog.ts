@@ -12,7 +12,7 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CampaignService } from '../../../core/services/campaign-service';
+import { CampaignService } from '../../../core/services/campaignServices/campaign-service';
 
 export interface DialogData {
   animal: string;

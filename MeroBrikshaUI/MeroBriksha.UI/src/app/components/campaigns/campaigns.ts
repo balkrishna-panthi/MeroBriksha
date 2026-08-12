@@ -14,8 +14,8 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DialogOverviewExample } from '../../shared/components/dialog/dialog';
-import { CampaignService } from '../../core/services/campaign-service';
-import { Campaign } from '../../core/models/campaign';
+import { CampaignService } from '../../core/services/campaignServices/campaign-service';
+import { Campaign } from '../../core/models/campaigns/campaign';
 import { Observable } from 'rxjs/internal/Observable';
 import { AsyncPipe } from '@angular/common';
 
