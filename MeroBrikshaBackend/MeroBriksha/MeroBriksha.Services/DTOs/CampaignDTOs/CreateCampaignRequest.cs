@@ -10,6 +10,8 @@ namespace MeroBriksha.Services.DTOs.CampaignDTOs
         public string? Description { get; set; }
         public string OrganizerName { get; set; }
         public DateTime StartDateUtc { get; set; }
-        public DateTime? EndDateUtc { get; set; }       
+        public DateTime? EndDateUtc { get; set; }    
+        
+        public int? TargetTreeCount { get; set; }
     }
 }

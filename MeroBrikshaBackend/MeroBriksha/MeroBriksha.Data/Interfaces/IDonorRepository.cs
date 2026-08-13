@@ -7,5 +7,7 @@ namespace MeroBriksha.Data.Interfaces
         Task<List<Donor>> GetAllDonorsAsync();
         Task<Donor> GetDonorByIdAsync(string id);
         Task<Donor> CreateDonorAsync(Donor donor);
+
+        Task<Donor> UpdateDonorAsync(Donor donor);
     }
 }

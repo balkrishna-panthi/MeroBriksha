@@ -1,7 +1,9 @@
-﻿using MeroBriksha.Services.DTOs.DonorDtos;
+﻿using MeroBriksha.Services.DTOs.CampaignDTOs;
+using MeroBriksha.Services.DTOs.DonorDtos;
 using MeroBriksha.Services.DTOs.Donors;
 using MeroBriksha.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using MeroBriksha.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeroBriksha.Controllers
@@ -29,6 +31,13 @@ namespace MeroBriksha.Controllers
         public async Task<IActionResult> CreateDonor(CreateDonorRequest request)
         {
             var donor = await _donorService.CreateDonorAsync(request);
+            return Ok(donor);
+        }
+
+        [HttpPost("Update")]
+        public async Task<IActionResult> UpdateDonor(UpdateDonorRequest donorRequest)
+        {
+            var donor = await _donorService.UpdateDonorAsync(donorRequest);
             return Ok(donor);
         }
     }

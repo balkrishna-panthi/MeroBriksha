@@ -56,7 +56,8 @@ namespace MeroBriksha.Services.Services
                 ORGANIZERNAME = request.OrganizerName,
                 DESCRIPTION = request.Description,
                 STARTDATEUTC = request.StartDateUtc,
-                ENDDATEUTC = request.EndDateUtc
+                ENDDATEUTC = request.EndDateUtc,
+                TARGETTREECOUNT = request.TargetTreeCount
             };
 
             var createdCampaign = await _campaignRepository.CreateCampaignAsync(campaign);
@@ -68,7 +69,8 @@ namespace MeroBriksha.Services.Services
                 Description = createdCampaign.DESCRIPTION,
                 OrganizerName = createdCampaign.ORGANIZERNAME,
                 StartDateUtc = createdCampaign.STARTDATEUTC,
-                EndDateUtc = createdCampaign.ENDDATEUTC
+                EndDateUtc = createdCampaign.ENDDATEUTC,
+                TargetTreeCount = createdCampaign.TARGETTREECOUNT
             };
             throw new NotImplementedException();
         }

@@ -34,6 +34,32 @@ namespace MeroBriksha.Data.Repositories
             return donor;
         }
 
-       
+        public async Task<Donor> UpdateDonorAsync(Donor donor)
+        {
+            var existingDonor = await _context.Donors
+       .FirstOrDefaultAsync(x => x.ID == donor.ID);
+
+            if (existingDonor == null)
+            {
+                return null;
+            }
+
+            existingDonor.FULLNAME = donor.FULLNAME;
+            existingDonor.EMAIL = donor.EMAIL;
+            existingDonor.PHONENUMBER = donor.PHONENUMBER;
+            existingDonor.ADDRESS = donor.ADDRESS;
+
+
+
+
+
+            await _context.SaveChangesAsync();
+
+            return existingDonor;
+        }
+
+
+
+
     }
 }
