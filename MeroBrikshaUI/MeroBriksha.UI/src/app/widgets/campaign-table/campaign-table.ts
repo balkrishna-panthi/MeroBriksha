@@ -14,8 +14,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   styleUrl: './campaign-table.css',
 })
 export class CampaignTable {
-  @Input() campaigns$?: Observable<Campaign[]>;
-  @Output() delete = new EventEmitter<string>();
+  campaigns$?: Observable<Campaign[]>;
 
   columns: TableColumn[] = [
     {
@@ -74,9 +73,28 @@ export class CampaignTable {
     }
   ];
   
-  constructor() { }  
+  ngOnInit(){
+    this.getCampaigns();
+  }
+  constructor(private campaignService: CampaignService) {
+  }
+
 
   deleteCampaign(campaignId: string): void {
-    this.delete.emit(campaignId);
+    this.campaignService.deleteCampaign(campaignId).subscribe(
+      {
+        next: result => {
+          console.log("The deletion result is : " + result);
+        },
+        error: (err) => {
+          console.error('Error deleting campaign', err);
+        }
+      }
+    );
+
+  }
+
+  getCampaigns() {
+    this.campaigns$ = this.campaignService.getCampaigns();
   }
 }

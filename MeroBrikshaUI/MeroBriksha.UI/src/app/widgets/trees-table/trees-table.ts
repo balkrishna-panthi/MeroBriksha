@@ -4,6 +4,7 @@ import { Tree } from '../../core/models/trees/tree';
 import { ActionType, ColumnType, TableColumn } from '../table-widget/models/table-column.model';
 import { TableWidget } from '../table-widget/table-widget';
 import { AsyncPipe } from '@angular/common';
+import { TreesService } from '../../core/services/treesServices/trees-service';
 
 @Component({
   selector: 'app-trees-table',
@@ -12,9 +13,8 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './trees-table.css',
 })
 export class TreesTable {
-@Input() trees$? : Observable<Tree[]>;
- @Output() delete = new EventEmitter<string>();
-columns: TableColumn[] = [
+  @Input() trees$?: Observable<Tree[]>;
+  columns: TableColumn[] = [
     {
       key: 'id',
       label: 'ID',
@@ -70,8 +70,16 @@ columns: TableColumn[] = [
       }
     }
   ];
+constructor(private treeService : TreesService){
 
-  deleteTree(id : string){
-      this.delete.emit(id);
-  }
+}
+  ngOnInit(){
+  this.getTrees();
+}
+getTrees(){
+  this.trees$ = this.treeService.getTrees();
+}
+deleteTree(id : string){
+  console.log("Delete Tree Clicked!!: " + id);
+}
 }

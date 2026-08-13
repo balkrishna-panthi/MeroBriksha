@@ -11,26 +11,11 @@ import { TreesTable } from "../../widgets/trees-table/trees-table";
   styleUrl: './trees.css',
 })
 export class Trees {
-  treesList$? : Observable<Tree[]>;
+  treesList$?: Observable<Tree[]>;
 
-constructor(private treeService : TreesService){
+  constructor(private treeService: TreesService) {
 
-}
-ngOnInit(){
-
-  this.treeService.getTrees().subscribe(data=>
-  {
-    console.log(data);
   }
-  );
-  this.getTrees();
-}
-getTrees(){
-  this.treesList$ = this.treeService.getTrees();
-}
-deleteTree(id : string){
-  console.log("Delete Tree Clicked!!: " + id);
-}
-
+  ngOnInit() { }
 
 }

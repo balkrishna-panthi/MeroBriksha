@@ -18,31 +18,28 @@ import { CampaignService } from '../../core/services/campaignServices/campaign-s
 import { Campaign } from '../../core/models/campaigns/campaign';
 import { Observable } from 'rxjs/internal/Observable';
 import { AsyncPipe } from '@angular/common';
+import { TreesTable } from '../../widgets/trees-table/trees-table';
 
 @Component({
   selector: 'app-campaigns',
-  imports: [CampaignTable, MatIconModule, MatButtonModule, AsyncPipe],
+  imports: [CampaignTable, TreesTable, MatIconModule, MatButtonModule, AsyncPipe],
   templateUrl: './campaigns.html',
   styleUrl: './campaigns.css',
 })
 export class Campaigns {
-  campaignsList$?: Observable<Campaign[]>
+ 
   constructor(private campaignService: CampaignService) {
   }
 
-  ngOnInit() {
-    this.getCampaigns();
-  }
+  ngOnInit() {}
+    
 
 
   onNewCampaignClick() {
     this.openDialog();    
-  }
-  
+  }  
 
-  getCampaigns() {
-    this.campaignsList$ = this.campaignService.getCampaigns();
-  }
+  
   newCampaign() {
     console.log('New Campaign button clicked');
     this.campaignService.postCampaign({
@@ -60,19 +57,7 @@ export class Campaigns {
       }
     });
   }
-  deleteCampaign(campaignId: string): void {
-    this.campaignService.deleteCampaign(campaignId).subscribe(
-      {
-        next: result => {
-          console.log("The deletion result is : " + result);
-        },
-        error: (err) => {
-          console.error('Error deleting campaign', err);
-        }
-      }
-    );
-
-  }
+  
   readonly animal = signal('');
   readonly name = model('');
   readonly dialog = inject(MatDialog);

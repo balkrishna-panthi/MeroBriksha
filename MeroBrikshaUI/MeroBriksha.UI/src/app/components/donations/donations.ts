@@ -12,21 +12,8 @@ import { DonationsTable } from '../../widgets/donations-table/donations-table';
 })
   export class Donations {
 
-    donationsList$? : Observable<Donation[]>;
-
     constructor(private donationService: DoantionService) {
 
     }
-    ngOnInit() {
-      this.getDonations();
-    }
-
-    getDonations() {
-      this.donationsList$ = this.donationService.getDonors();
-    }
-
-    deleteDonation(donationId : string){
-      console.log("donation to delete : " + donationId);
-    }
-
+    ngOnInit() {}
   }

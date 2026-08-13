@@ -5,6 +5,7 @@ import { ActionType, ColumnType, TableColumn } from '../table-widget/models/tabl
 
 import { TableWidget } from '../table-widget/table-widget';
 import { AsyncPipe } from '@angular/common';
+import { DoantionService } from '../../core/services/donationServices/doantion-service';
 
 @Component({
   selector: 'app-donations-table',
@@ -13,8 +14,7 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './donations-table.css',
 })
 export class DonationsTable {
-  @Input() donations$?: Observable<Donation[]>;
-  @Output() delete = new EventEmitter<string>();
+ donations$?: Observable<Donation[]>;
 
 
   columns: TableColumn[] = [
@@ -68,10 +68,21 @@ export class DonationsTable {
       }
     }
   ];
-  
-  deleteDonation(id: string) {
-    this.delete.emit(id);
+
+
+
+  constructor(private donationService: DoantionService) {
+
+  }
+  ngOnInit() {
+    this.getDonations();
   }
 
+  getDonations() {
+    this.donations$ = this.donationService.getDonors();
+  }
 
+  deleteDonation(donationId: string) {
+    console.log("donation to delete : " + donationId);
+  }
 }
