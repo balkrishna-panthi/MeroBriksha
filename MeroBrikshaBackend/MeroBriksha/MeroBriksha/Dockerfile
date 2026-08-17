@@ -2,6 +2,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 
 WORKDIR /app
 
-COPY ./published/ ./
+COPY published/ ./
 
 ENTRYPOINT ["dotnet", "MeroBriksha.dll"]
