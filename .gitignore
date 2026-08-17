@@ -20,3 +20,8 @@
 /MeroBrikshaUI/MeroBriksha.UI/.vscode
 /MeroBrikshaBackend/MeroBriksha/Authentication/bin/Debug/net10.0
 /MeroBrikshaBackend/MeroBriksha/Authentication/obj
+/MeroBrikshaBackend/MeroBriksha/Authentication/bin/Release/net10.0
+/MeroBrikshaBackend/MeroBriksha/MeroBriksha/bin/Release/net10.0
+/MeroBrikshaBackend/MeroBriksha/MeroBriksha.Core/bin/Release/net10.0
+/MeroBrikshaBackend/MeroBriksha/MeroBriksha.Data/bin/Release/net10.0
+/MeroBrikshaBackend/MeroBriksha/MeroBriksha.Services/bin/Release/net10.0
