@@ -22,7 +22,7 @@ namespace MeroBriksha.Core.Entities
         public string? PAYMENTREFERENCE { get; set; }
         public string? REMARKS { get; set; }
 
-        public DateTime CREATEDDATE { get; set; }
+        public DateTime CREATEDDATE { get; set; } = DateTime.UtcNow;
         public DateTime? VERIFIEDDATE { get; set; }
     }
 }

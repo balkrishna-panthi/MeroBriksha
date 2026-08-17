@@ -33,7 +33,6 @@ public class TreeAssignmentConfiguration : IEntityTypeConfiguration<TreeAssignme
 
         builder.Property(x => x.CREATEDDATE)
             .HasColumnName("CREATEDDATE")
-            .HasDefaultValueSql("GETUTCDATE()")
             .ValueGeneratedOnAdd();
        
         // IMPORTANT:

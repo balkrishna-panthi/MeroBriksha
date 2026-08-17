@@ -77,7 +77,6 @@ public class TreeConfiguration : IEntityTypeConfiguration<Tree>
 
         builder.Property(x => x.CREATEDDATE)
             .HasColumnName("CREATEDDATE")
-            .HasDefaultValueSql("GETUTCDATE()")
             .ValueGeneratedOnAdd();
 
 

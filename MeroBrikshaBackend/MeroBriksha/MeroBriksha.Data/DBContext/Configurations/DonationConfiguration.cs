@@ -58,7 +58,6 @@ public class DonationConfiguration : IEntityTypeConfiguration<Donation>
 
         builder.Property(x => x.CREATEDDATE)
             .HasColumnName("CREATEDDATE")
-            .HasDefaultValueSql("GETUTCDATE()")
             .ValueGeneratedOnAdd();
 
         builder.Property(x => x.VERIFIEDDATE)

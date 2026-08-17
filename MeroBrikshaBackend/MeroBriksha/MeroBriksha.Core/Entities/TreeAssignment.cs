@@ -16,6 +16,6 @@ namespace MeroBriksha.Core.Entities
 
         public string? REMARKS { get; set; }
 
-        public DateTime CREATEDDATE { get; set; }
+        public DateTime CREATEDDATE { get; set; } = DateTime.UtcNow;
     }
 }

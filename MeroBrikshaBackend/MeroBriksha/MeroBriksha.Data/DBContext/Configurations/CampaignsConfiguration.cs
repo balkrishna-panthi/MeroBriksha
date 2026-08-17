@@ -38,8 +38,7 @@ namespace MeroBriksha.Data.DBContext.Configurations
             builder.Property(x => x.TARGETTREECOUNT);
 
             builder.Property(x => x.CREATEDDATE)
-               .IsRequired()
-               .HasDefaultValueSql("GETUTCDATE()");
+     .IsRequired();
 
             builder.Property(x => x.ISDELETED)
                 .IsRequired()

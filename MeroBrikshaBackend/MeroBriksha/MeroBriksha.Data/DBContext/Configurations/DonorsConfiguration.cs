@@ -32,8 +32,7 @@ namespace MeroBriksha.Data.DBContext.Configurations
                 .HasMaxLength(300);
 
             builder.Property(x => x.CREATEDDATE)
-               .IsRequired()
-               .HasDefaultValueSql("GETUTCDATE()");
+               .IsRequired();
         }
 
     }
