@@ -22,4 +22,8 @@
     <ProjectReference Include="..\MeroBriksha.Services\MeroBriksha.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="published\" />
+  </ItemGroup>
+
 </Project>
