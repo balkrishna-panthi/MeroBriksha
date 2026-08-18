@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TreesService {
 
-  private readonly apiUrl = 'https://localhost:7067/api/Tree';
+  private readonly apiUrl = 'https://merobriksha.onrender.com/api/Tree';
  
    constructor(private http: HttpClient) { }
  

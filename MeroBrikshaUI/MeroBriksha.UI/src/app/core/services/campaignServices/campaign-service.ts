@@ -9,7 +9,7 @@ import { CampaignRequest } from '../../models/campaigns/campaignrequest';
 })
 export class CampaignService {
 
-  private readonly apiUrl = 'https://localhost:7067/api/campaign/all';
+  private readonly apiUrl = 'https://merobriksha.onrender.com/api/campaign/all';
 
   constructor(private http: HttpClient) { }
 

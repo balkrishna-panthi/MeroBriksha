@@ -9,7 +9,7 @@ import { Donor } from '../../models/donors/donor';
 })
 export class DoantionService {
 
-   private readonly apiUrl = 'https://localhost:7067/api/Donations/GetAll';
+  private readonly apiUrl = 'https://merobriksha.onrender.com/api/Donations/GetAll';
    
      constructor(private http: HttpClient) { }
    

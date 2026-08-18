@@ -8,7 +8,7 @@ import { Donor } from '../../models/donors/donor';
 })
 export class DonorsService {
 
-  private readonly apiUrl = 'https://localhost:7067/api/public/donors/getdonors';
+  private readonly apiUrl = 'https://merobriksha.onrender.com/api/public/donors/getdonors';
  
    constructor(private http: HttpClient) { }
  
