@@ -16,6 +16,10 @@ export class DoantionService {
      getDonors(): Observable<Donation[]> {
        return this.http.get<Donation[]>(this.apiUrl);
      }
+     totalDonationPerCampaign(campaignId : string) : Observable<any>{
+      return this.http.get<number>("https://merobriksha.onrender.com/api/Donations/TotalByCampaignID/"+campaignId);
+
+     }
    
   
 }

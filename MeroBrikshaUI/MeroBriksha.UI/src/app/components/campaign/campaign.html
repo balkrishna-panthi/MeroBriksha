@@ -1,0 +1,77 @@
+<main class="campaign-dashboard">
+  <header class="dashboard-header">
+    <div>
+      <span class="eyebrow">Campaign dashboard</span>
+      <h1>Campaign overview</h1>
+      <p class="subtitle">
+        Track the progress and impact of your campaign.
+      </p>
+    </div>
+
+    <div class="campaign-status">
+      <span class="status-dot"></span>
+      Active campaign
+    </div>
+  </header>
+
+  <section class="stats-grid" aria-label="Campaign statistics">
+    <article class="stat-card stat-card-primary">
+      <div class="stat-card-header">
+        <span class="stat-label">Campaign ID</span>
+        <span class="stat-icon">#</span>
+      </div>
+
+      <h2>{{ campaignId }}</h2>
+      <p class="stat-description">Currently selected campaign</p>
+    </article>
+
+    <article class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-label">Total raised</span>
+        <span class="stat-icon currency-icon">$</span>
+      </div>
+
+      <h2>{{ totalDonation()?.totalAmount || 0 }}</h2>
+      <p class="stat-description">Total donations received</p>
+    </article>
+
+    <article class="stat-card">
+      <div class="stat-card-header">
+        <span class="stat-label">Campaign status</span>
+        <span class="stat-icon check-icon">✓</span>
+      </div>
+
+      <h2>Active</h2>
+      <p class="stat-description">Your campaign is currently running</p>
+    </article>
+  </section>
+
+  <section class="dashboard-panel">
+    <div class="panel-heading">
+      <div>
+        <span class="eyebrow">Overview</span>
+        <h2>Campaign performance</h2>
+      </div>
+
+      <button type="button" class="action-button">
+        View details
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-info">
+        <span>Donation progress</span>
+        <strong>{{ totalDonation()?.totalAmount || 0 }} raised</strong>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-value"></div>
+      </div>
+
+      <p class="panel-description">
+        Keep sharing your campaign to reach more supporters and increase its impact.
+      </p>
+    </div>
+  </section>
+</main>

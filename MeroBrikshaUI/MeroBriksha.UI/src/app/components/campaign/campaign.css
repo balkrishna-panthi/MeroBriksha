@@ -1,0 +1,385 @@
+:host,
+:host *,
+:host *::before,
+:host *::after {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #f5f7fb;
+  color: #172033;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.campaign-dashboard {
+  width: min(calc(100% - 56px), 1200px);
+  margin: 0 auto;
+  padding: 42px 0 64px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+  margin-bottom: 34px;
+}
+
+.dashboard-header > div:first-child {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #667085;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #101828;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: #667085;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.campaign-status {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 15px;
+  border: 1px solid #b7ebd0;
+  border-radius: 999px;
+  background: #ecfdf3;
+  color: #087443;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #12b76a;
+  box-shadow: 0 0 0 4px rgba(18, 183, 106, 0.14);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  display: flex;
+  min-width: 0;
+  min-height: 170px;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #eaecf0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.05);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(16, 24, 40, 0.09);
+}
+
+.stat-card-primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, #315bea 0%, #6941c6 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(49, 91, 234, 0.24);
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.stat-label {
+  min-width: 0;
+  overflow: hidden;
+  color: #667085;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stat-card-primary .stat-label {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.stat-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border-radius: 10px;
+  background: #f2f4f7;
+  color: #315bea;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.stat-card-primary .stat-icon {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.currency-icon {
+  color: #12b76a;
+}
+
+.check-icon {
+  color: #087443;
+}
+
+.stat-card h2 {
+  min-width: 0;
+  margin: auto 0 0;
+  overflow: hidden;
+  color: #101828;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stat-card-primary h2 {
+  color: #ffffff;
+}
+
+.stat-description {
+  min-height: 21px;
+  margin: 8px 0 0;
+  color: #98a2b3;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.stat-card-primary .stat-description {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.dashboard-panel {
+  width: 100%;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #eaecf0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.05);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-width: 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f2f4f7;
+}
+
+.panel-heading > div {
+  min-width: 0;
+}
+
+.panel-heading h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #101828;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.action-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border: 1px solid #d0d5dd;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #344054;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.action-button:hover {
+  border-color: #98a2b3;
+  background: #f9fafb;
+}
+
+.action-button span {
+  color: #315bea;
+  font-size: 1.1rem;
+}
+
+.progress-section {
+  min-width: 0;
+  padding-top: 28px;
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  margin-bottom: 12px;
+  color: #475467;
+  font-size: 0.9rem;
+}
+
+.progress-info span,
+.progress-info strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progress-info strong {
+  color: #101828;
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eaecf0;
+}
+
+.progress-value {
+  width: 68%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #315bea, #7f56d9);
+}
+
+.panel-description {
+  margin: 16px 0 0;
+  color: #667085;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .campaign-dashboard {
+    width: min(calc(100% - 40px), 1200px);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-card-primary {
+    grid-column: span 2;
+  }
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .campaign-dashboard {
+    width: calc(100% - 32px);
+    padding: 28px 0 44px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .campaign-status {
+    align-self: flex-start;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-card-primary {
+    grid-column: auto;
+  }
+
+  .dashboard-panel {
+    padding: 22px 18px;
+  }
+
+  .panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+
+  .progress-info {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .progress-info span,
+  .progress-info strong {
+    white-space: normal;
+  }
+}
+.stat-card-primary {
+  background: linear-gradient(135deg, #14532d 0%, #237a57 58%, #4d9f62 100%);
+  box-shadow: 0 12px 28px rgba(20, 83, 45, 0.24);
+}
+
+.progress-value {
+  background: linear-gradient(90deg, #237a57, #a7c957);
+}
