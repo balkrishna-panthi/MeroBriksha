@@ -51,7 +51,7 @@ namespace MeroBriksha
             if (!builder.Environment.IsDevelopment())
             {
                 builder.Services.AddDbContext<PostgreSqlDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSqlConnection")));
-                //builder.Services.AddScoped<AppDbContext>(provider => provider.GetRequiredService<PostgreSqlDbContext>());
+                builder.Services.AddScoped<AppDbContext>(provider => provider.GetRequiredService<PostgreSqlDbContext>());
             }
             else
                 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
