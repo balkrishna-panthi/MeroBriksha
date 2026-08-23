@@ -1,14 +1,64 @@
-<div class="header">
-  <div class="header-logo">
-    <h1>Mero Briksha</h1>
-  </div>
-  <div class="header-center">
+<header class="app-header">
+  <div class="header-inner">
+    
+<a class="brand" href="/" aria-label="Mero Briksha home">
+  <img
+    class="brand-logo"
+    src="MeroBrikshaLogo.jpeg"
+    alt="Mero Briksha"
+  />
 
+  <span class="brand-name">
+    Mero<span>Briksha</span>
+  </span>
+</a>
+    <nav class="main-navigation" aria-label="Main navigation">
+      <a class="nav-link active" href="/campaigns">
+        <span class="nav-icon" aria-hidden="true">🌱</span>
+        <span>Campaigns</span>
+      </a>
+
+      <a class="nav-link" href="/donations">
+        <span class="nav-icon" aria-hidden="true">♡</span>
+        <span>Donations</span>
+      </a>
+
+      <a class="nav-link" href="/reports">
+        <span class="nav-icon" aria-hidden="true">▥</span>
+        <span>Reports</span>
+      </a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" type="button" aria-label="Search">
+        <span aria-hidden="true">⌕</span>
+      </button>
+
+      <button
+        class="icon-button notification-button"
+        type="button"
+        aria-label="Notifications"
+      >
+        <span aria-hidden="true">♧</span>
+        <span class="notification-badge">3</span>
+      </button>
+
+      <div class="profile-menu">
+        <div class="profile-avatar" aria-hidden="true">AS</div>
+
+        <div class="profile-details">
+          <strong>Admin User</strong>
+          <span>Administrator</span>
+        </div>
+
+        <button
+          class="profile-chevron"
+          type="button"
+          aria-label="Open profile menu"
+        >
+          <span aria-hidden="true">⌄</span>
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="header-menu">
-    <span class="header-menu-item"><a routerLink="/campaigns">Campaigns</a></span>
-    <span class="header-menu-item"><a routerLink="/donors">Donors</a></span>
-    <span class="header-menu-item"><a routerLink="/donations">Donations</a></span>
-    <span class="header-menu-item"><a routerLink="/trees">Trees</a></span>
-  </div> 
-</div>
+</header>

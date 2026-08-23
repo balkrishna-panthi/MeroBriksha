@@ -5,14 +5,16 @@ import { Dialog } from './shared/components/dialog/dialog';
 import { Donors } from './components/donors/donors';
 import { Donations } from './components/donations/donations';
 import { Trees } from './components/trees/trees';
+import { Campaign } from './components/campaign/campaign';
+import { Dashboard } from './components/dashboard/dashboard';
 
-export const routes: Routes = [{
-  path: '',
-  component: Campaigns
-},
+export const routes: Routes = [
+  { path: '',component: Dashboard},
+  { path: 'dashboard',component: Dashboard},
   { path: 'campaigns', component: Campaigns },
-  { path: 'dialog', component: Dialog } ,
-  { path: 'donors', component: Donors},
-  { path : 'donations', component: Donations},
-  { path : 'trees', component: Trees}
+  { path: 'dialog', component: Dialog },
+  { path: 'donors', component: Donors },
+  { path: 'donations', component: Donations },
+  { path: 'trees', component: Trees },
+  { path: 'campaign/:id', component: Campaign }
 ];

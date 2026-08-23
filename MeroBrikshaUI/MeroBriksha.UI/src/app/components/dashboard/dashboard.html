@@ -1,1 +1,185 @@
-<p>dashboard works!</p>
+<main class="dashboard-page">
+  <section class="welcome-section">
+    <div>
+      <span class="eyebrow">MeroBriksha overview</span>
+      <h1>Good morning, Admin 👋</h1>
+      <p>
+        Here is an overview of your tree-planting campaigns and environmental
+        impact.
+      </p>
+    </div>
+
+    <button class="primary-button" type="button">
+      <span aria-hidden="true">+</span>
+      Create campaign
+    </button>
+  </section>
+
+  <section class="stats-grid" aria-label="Impact statistics">
+    <article class="stat-card">
+      <div class="stat-icon green-icon">🌱</div>
+      <div class="stat-content">
+        <span class="stat-label">Total campaigns</span>
+        <strong class="stat-value">24</strong>
+        <span class="stat-change positive">↑ 12.5% this month</span>
+      </div>
+    </article>
+
+    <article class="stat-card">
+      <div class="stat-icon lime-icon">🌳</div>
+      <div class="stat-content">
+        <span class="stat-label">Trees planted</span>
+        <strong class="stat-value">8,642</strong>
+        <span class="stat-change positive">↑ 18.2% this month</span>
+      </div>
+    </article>
+
+    <article class="stat-card">
+      <div class="stat-icon orange-icon">रु</div>
+      <div class="stat-content">
+        <span class="stat-label">Total donations</span>
+        <strong class="stat-value">रु 486,250</strong>
+        <span class="stat-change positive">↑ 9.8% this month</span>
+      </div>
+    </article>
+
+    <article class="stat-card">
+      <div class="stat-icon blue-icon">♧</div>
+      <div class="stat-content">
+        <span class="stat-label">Active supporters</span>
+        <strong class="stat-value">1,284</strong>
+        <span class="stat-change positive">↑ 7.4% this month</span>
+      </div>
+    </article>
+  </section>
+
+  <section class="dashboard-grid">
+    <article class="dashboard-card impact-card">
+      <div class="card-header">
+        <div>
+          <span class="eyebrow">Environmental impact</span>
+          <h2>Planting progress</h2>
+        </div>
+
+        <button class="more-button" type="button" aria-label="More options">
+          ⋮
+        </button>
+      </div>
+
+      <div class="impact-summary">
+        <div class="impact-number">
+          <strong>8,642</strong>
+          <span>trees planted</span>
+        </div>
+
+        <div class="target-info">
+          <span>Annual target</span>
+          <strong>12,000 trees</strong>
+        </div>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+        <div class="progress-value"></div>
+      </div>
+
+      <div class="progress-footer">
+        <span>72% completed</span>
+        <span>3,358 trees remaining</span>
+      </div>
+
+      <div class="chart-area" aria-label="Monthly planting activity">
+        <div class="chart-grid-line"></div>
+        <div class="chart-grid-line"></div>
+        <div class="chart-grid-line"></div>
+
+        <div class="chart-bars">
+          <div class="bar-wrapper"><span class="chart-bar" style="height: 42%"></span><small>Jan</small></div>
+          <div class="bar-wrapper"><span class="chart-bar" style="height: 58%"></span><small>Feb</small></div>
+          <div class="bar-wrapper"><span class="chart-bar" style="height: 48%"></span><small>Mar</small></div>
+          <div class="bar-wrapper"><span class="chart-bar" style="height: 72%"></span><small>Apr</small></div>
+          <div class="bar-wrapper"><span class="chart-bar" style="height: 66%"></span><small>May</small></div>
+          <div class="bar-wrapper"><span class="chart-bar current" style="height: 88%"></span><small>Jun</small></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="dashboard-card goal-card">
+      <div class="card-header">
+        <div>
+          <span class="eyebrow">Your contribution</span>
+          <h2>Impact goal</h2>
+        </div>
+      </div>
+
+      <div class="goal-visual">
+        <div class="goal-circle">
+          <strong>72%</strong>
+          <span>completed</span>
+        </div>
+      </div>
+
+      <div class="goal-details">
+        <div>
+          <span class="goal-dot planted-dot"></span>
+          <span>Trees planted</span>
+          <strong>8,642</strong>
+        </div>
+
+        <div>
+          <span class="goal-dot remaining-dot"></span>
+          <span>Remaining goal</span>
+          <strong>3,358</strong>
+        </div>
+      </div>
+    </article>
+
+    <article class="dashboard-card campaigns-card">
+      <div class="card-header">
+        <div>
+          <span class="eyebrow">Campaign activity</span>
+          <h2>Recent campaigns</h2>
+        </div>
+
+        <a class="view-link" href="/campaigns">View all →</a>
+      </div>
+
+      <div class="campaign-list">
+        <div class="campaign-item">
+          <div class="campaign-avatar">🌲</div>
+          <div class="campaign-info">
+            <strong>Green Hills Restoration</strong>
+            <span>156 supporters · 2 days ago</span>
+          </div>
+          <span class="campaign-amount">रु 84,500</span>
+        </div>
+
+        <div class="campaign-item">
+          <div class="campaign-avatar">🌿</div>
+          <div class="campaign-info">
+            <strong>Plant a Tree, Save a Life</strong>
+            <span>98 supporters · 5 days ago</span>
+          </div>
+          <span class="campaign-amount">रु 62,750</span>
+        </div>
+
+        <div class="campaign-item">
+          <div class="campaign-avatar">🌱</div>
+          <div class="campaign-info">
+            <strong>Community Forest Project</strong>
+            <span>74 supporters · 1 week ago</span>
+          </div>
+          <span class="campaign-amount">रु 41,200</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="motivation-banner">
+    <div class="motivation-icon">🌍</div>
+    <div>
+      <span class="eyebrow">Together for a greener future</span>
+      <h2>Every tree planted is a step toward a healthier planet.</h2>
+    </div>
+    <a class="banner-link" href="/campaigns">Explore campaigns →</a>
+  </section>
+</main>

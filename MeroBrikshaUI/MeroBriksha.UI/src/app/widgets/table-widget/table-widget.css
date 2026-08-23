@@ -1,0 +1,84 @@
+:host {
+  --forest-primary: #237a57;
+  --forest-dark: #14532d;
+  --leaf-green: #4d9f62;
+  --fresh-lime: #a7c957;
+  --background-sage: #f4f8f2;
+  --surface-white: #ffffff;
+  --text-primary: #18332a;
+  --text-secondary: #667a70;
+  --border-green: #dce8df;
+
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-green);
+  border-radius: 16px;
+  background: var(--surface-white);
+  box-shadow: 0 8px 24px rgba(20, 83, 45, 0.08);
+}
+
+/* ...existing code... */
+
+.mat-mdc-header-row {
+  height: 54px;
+  background: #edf5ee;
+}
+
+.mat-mdc-header-cell {
+  color: var(--forest-dark);
+  border-bottom-color: var(--border-green);
+}
+
+/* ...existing code... */
+
+.mat-mdc-row:hover {
+  background: #f5faf5;
+}
+
+.mat-mdc-cell {
+  color: var(--text-primary);
+  border-bottom-color: #edf2ee;
+}
+
+/* ...existing code... */
+
+.mat-mdc-cell:first-child {
+  color: var(--forest-dark);
+}
+
+/* ...existing code... */
+
+a {
+  color: var(--forest-primary);
+}
+
+a:hover {
+  color: var(--forest-dark);
+}
+
+/* ...existing code... */
+
+button[mat-button] {
+  color: var(--forest-primary);
+}
+
+button[mat-button]:hover:not(:disabled) {
+  background: #e7f3e9;
+  color: var(--forest-dark);
+}
+
+/* ...existing code... */
+
+:host ::ng-deep .mat-mdc-icon-button:hover:not(:disabled) {
+  background: #e7f3e9;
+  color: var(--forest-primary);
+}
+
+/* ...existing code... */
+
+a:focus-visible,
+button:focus-visible {
+  outline-color: rgba(35, 122, 87, 0.35);
+}
