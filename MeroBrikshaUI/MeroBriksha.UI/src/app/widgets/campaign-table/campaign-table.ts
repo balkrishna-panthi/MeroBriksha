@@ -19,8 +19,18 @@ export class CampaignTable {
   columns: TableColumn[] = [
     {
       key: 'id',
-      label: 'Campaign ID',
-      type: ColumnType.text
+      label: 'Campaign Id',
+      type: ColumnType.routerLink,
+      config: {
+        actions: [
+          {
+            //routerLabel: row => String(row.id),
+            label : "Campaign Id",
+            type: ActionType.link,
+            routerLink: row => ['/campaign', row.id]
+          }
+        ]
+      }
     },
     {
       key: 'name',

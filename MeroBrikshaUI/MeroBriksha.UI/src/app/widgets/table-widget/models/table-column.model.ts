@@ -11,8 +11,7 @@ export interface ColumnConfig {
 
 export interface TableAction {
   label: string;
-  type: ActionType;
-
+  type: ActionType; 
   routerLink?: (row: any) => any[]; //Angular's routerLink directive can accept an array of route segments:<a [routerLink]="['/campaigns', 42, 'edit']">Edit</a>
   disabled?: (row: any) => boolean;
   onClick?: (row: any) => void;
@@ -20,7 +19,8 @@ export interface TableAction {
 export enum ColumnType {
   text,
   number,
-  actions
+  actions,
+  routerLink
 }
 export enum ActionType {
   link,
