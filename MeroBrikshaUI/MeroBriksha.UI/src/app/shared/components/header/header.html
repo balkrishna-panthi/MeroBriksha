@@ -1,29 +1,59 @@
 <header class="app-header">
   <div class="header-inner">
-    
-<a class="brand" href="/" aria-label="Mero Briksha home">
-  <img
-    class="brand-logo"
-    src="MeroBrikshaLogo.jpeg"
-    alt="Mero Briksha"
-  />
+    <a class="brand" routerLink="/" aria-label="Mero Briksha home">
+      <img
+        class="brand-logo"
+        src="MeroBrikshaLogo.jpeg"
+        alt="Mero Briksha"
+      />
 
-  <span class="brand-name">
-    Mero<span>Briksha</span>
-  </span>
-</a>
-    <nav class="main-navigation" aria-label="Main navigation">
-      <a class="nav-link active" routerLink="/campaigns">
+      <span class="brand-name">
+        Mero<span>Briksha</span>
+      </span>
+    </a>
+
+    <button
+      class="mobile-menu-button"
+      type="button"
+      [attr.aria-expanded]="isMobileMenuOpen"
+      aria-controls="main-navigation"
+      aria-label="Toggle navigation menu"
+      (click)="toggleMobileMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      id="main-navigation"
+      class="main-navigation"
+      [class.mobile-open]="isMobileMenuOpen"
+      aria-label="Main navigation"
+    >
+      <a
+        class="nav-link active"
+        routerLink="/campaigns"
+        (click)="closeMobileMenu()"
+      >
         <span class="nav-icon" aria-hidden="true">🌱</span>
         <span>Campaigns</span>
       </a>
 
-      <a class="nav-link" routerLink="/donations">
+      <a
+        class="nav-link"
+        routerLink="/donations"
+        (click)="closeMobileMenu()"
+      >
         <span class="nav-icon" aria-hidden="true">♡</span>
         <span>Donations</span>
       </a>
 
-      <a class="nav-link" routerLink="/reports">
+      <a
+        class="nav-link"
+        routerLink="/reports"
+        (click)="closeMobileMenu()"
+      >
         <span class="nav-icon" aria-hidden="true">▥</span>
         <span>Reports</span>
       </a>
