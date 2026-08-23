@@ -21,6 +21,20 @@
                     {{ row[column.key] }}
                     }
 
+                    @case (columnType.routerLink)
+                    {
+                      @for(link of column.config?.actions; track link.label)
+                      {
+                         <a [routerLink]="link.routerLink?.(row)"
+                                    [class.disabled]="link.disabled?.(row)">
+                                  {{ row[column.key] }}
+                                </a>
+
+                      }
+                     
+                    
+                    }
+
                     @case (columnType.number)
                     {
                     {{ row[column.key] }}
