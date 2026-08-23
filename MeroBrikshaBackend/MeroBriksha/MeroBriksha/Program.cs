@@ -8,6 +8,7 @@ using MeroBriksha.Services.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using NLog.Web;
 using System.Reflection;
 using System.Transactions;
 
@@ -18,6 +19,8 @@ namespace MeroBriksha
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Logging.ClearProviders();
+            builder.Host.UseNLog();
 
             builder.Services.AddControllers();
 

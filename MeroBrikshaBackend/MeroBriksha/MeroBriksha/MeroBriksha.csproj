@@ -12,6 +12,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
   
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
+  
+    <PackageReference Include="NLog.Web.AspNetCore" Version="6.2.0" />
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
   </ItemGroup>
 
@@ -24,6 +26,12 @@
 
   <ItemGroup>
     <Folder Include="published\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
