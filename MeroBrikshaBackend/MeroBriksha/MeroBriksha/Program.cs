@@ -49,10 +49,12 @@ namespace MeroBriksha
             //builder.Services.AddDbContext<AppDbContext>(options =>
             //options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             if (!builder.Environment.IsDevelopment())
+            {
                 builder.Services.AddDbContext<PostgreSqlDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSqlConnection")));
+                //builder.Services.AddScoped<AppDbContext>(provider => provider.GetRequiredService<PostgreSqlDbContext>());
+            }
             else
                 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddScoped<AppDbContext>(provider => provider.GetRequiredService<PostgreSqlDbContext>());
             #region Dependency Injection
 
             builder.Services.AddTransient<ICampaignServices, CampaignService>();
@@ -109,8 +111,8 @@ namespace MeroBriksha
 
                 //if (app.Environment.IsDevelopment())
                 //{
-                    app.UseSwagger();
-                    app.UseSwaggerUI();
+                app.UseSwagger();
+                app.UseSwaggerUI();
                 //}
 
                 app.UseHttpsRedirection();
