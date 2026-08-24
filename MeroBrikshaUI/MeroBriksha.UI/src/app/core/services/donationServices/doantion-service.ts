@@ -16,7 +16,7 @@ export class DoantionService {
        return this.http.get<Donation[]>(APP_CONSTANTS.API_BASE_URL + '/Donations/GetAll');
      }
      totalDonationPerCampaign(campaignId : string) : Observable<any>{
-      return this.http.get<number>(APP_CONSTANTS.API_BASE_URL + '/Donations/TotalByCampaignID/' + campaignId);
+      return this.http.get<any>(APP_CONSTANTS.API_BASE_URL + '/Donations/TotalByCampaignID/' + campaignId);
      }
    
   
